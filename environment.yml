@@ -7,4 +7,5 @@ dependencies:
 - numpy=2.3.5
 - pandas=2.3.3
 - conda-lock=3.0.4
-
+- s3cmd=2.4.0
+prefix: /Users/skysheng/miniforge3/envs/arbutus
