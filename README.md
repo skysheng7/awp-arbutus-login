@@ -59,7 +59,7 @@ source def-ubcawp-dev-openrc.sh
 
 You will be prompted to enter your OpenStack password. Enter your password when prompted (it won't be displayed on screen for security).
 
-## Verification
+4. Verification
 
 Verify that you're authenticated by running the following commands:
 
@@ -68,13 +68,61 @@ Verify that you're authenticated by running the following commands:
 openstack image list
 ```
 
-**List available servers:** It might return an empty list
+5. Establish access to Arbutus Object Store
+
+In order to manage your Arbutus Object Store, you need your own storage access ID & secret key. In terminal, create credentails using: 
+
 ```bash
-openstack server list
+openstack ec2 credentials create
 ```
+
+6. Configure `s3cmd`
+
+To configure the s3cmd tool, you will use the command: 
+
+```bash
+s3cmd --configure
+```
+
+Then make the following configurations using youre credential printed out in the terminal above:
+
+```bash
+Enter new values or accept defaults in brackets with Enter.
+Refer to user manual for detailed description of all options.
+
+Access key and Secret key are your identifiers for Amazon S3. Leave them empty for using the env variables.
+Access Key []: 20_DIGIT_ACCESS_KEY
+Secret Key []: 40_DIGIT_SECRET_KEY
+Default Region [US]:
+
+Use "s3.amazonaws.com" for S3 Endpoint and not modify it to the target Amazon S3.
+S3 Endpoint []: object-arbutus.cloud.computecanada.ca
+
+Use "%(bucket)s.s3.amazonaws.com" to the target Amazon S3. "%(bucket)s" and "%(location)s" vars can be used
+if the target S3 system supports dns based buckets.
+DNS-style bucket+hostname:port template for accessing a bucket []: object-arbutus.cloud.computecanada.ca
+
+Encryption password is used to protect your files from reading
+by unauthorized persons while in transfer to S3
+Encryption password []:
+Path to GPG program [/usr/bin/gpg]: 
+
+When using secure HTTPS protocol all communication with Amazon S3
+servers is protected from 3rd party eavesdropping. This method is
+slower than plain HTTP, and can only be proxied with Python 2.7 or newer
+Use HTTPS protocol []: Yes
+
+On some networks all internet access must go through a HTTP proxy.
+Try setting it here if you can't connect to S3 directly
+HTTP Proxy server name:
+```
+
+* You will be prompted for "Test access with supplied credentials?" --> Answer "y"
+* You will be prompted for "Save settings? [y/N]" --> Answer "y"
 
 ## Additional Resources
 
 - [OpenStack CLI Guide](https://docs.alliancecan.ca/wiki/OpenStack_command_line_clients)
 - [Digital Research Alliance of Canada Documentation](https://docs.computecanada.ca/)
 - [OpenStack Client Documentation](https://docs.openstack.org/python-openstackclient/latest/)
+- [s3cmd setup](https://docs.alliancecan.ca/wiki/Accessing_object_storage_with_s3cmd)
