@@ -9,8 +9,8 @@ on:
   workflow_dispatch:
   push:
     paths:
-      - '.devcontainer/Dockerfile'
-      - '.devcontainer/conda-lock.yml'
+      - 'Dockerfile'
+      - 'conda-lock.yml'
       - '.devcontainer/devcontainer.json'
 
 jobs:
@@ -40,7 +40,7 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           context: .
-          file: ./.devcontainer/Dockerfile
+          file: ./Dockerfile
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
