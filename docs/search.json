@@ -74,21 +74,21 @@
     "href": "tutorial/getting-started.html",
     "title": "00. Getting Started",
     "section": "",
-    "text": "Before you begin, ensure you have:\n\nMiniforge installed\nconda-lock installed (install with conda install conda-lock)\nAn account with Digital Research Alliance of Canada\nAn account with Arbutus\nThe ability to login to Arbutus"
+    "text": "Before you begin, ensure you have:\n\nAn account with Digital Research Alliance of Canada\nAn account with Arbutus\nThe ability to login to Arbutus\n\n\n\n\nTo recreate the computational environment, you will need ONE of the following:\nOption A: Docker (Recommended)\n\nDocker installed on your system\nWorks on all operating systems (Windows, macOS, Linux)\n\nOption B: Conda\n\nMiniforge installed\nconda-lock installed (run conda install conda-lock)\nOnly available for: linux-64, osx-64, osx-arm64"
   },
   {
     "objectID": "tutorial/getting-started.html#prerequisites",
     "href": "tutorial/getting-started.html#prerequisites",
     "title": "00. Getting Started",
     "section": "",
-    "text": "Before you begin, ensure you have:\n\nMiniforge installed\nconda-lock installed (install with conda install conda-lock)\nAn account with Digital Research Alliance of Canada\nAn account with Arbutus\nThe ability to login to Arbutus"
+    "text": "Before you begin, ensure you have:\n\nAn account with Digital Research Alliance of Canada\nAn account with Arbutus\nThe ability to login to Arbutus\n\n\n\n\nTo recreate the computational environment, you will need ONE of the following:\nOption A: Docker (Recommended)\n\nDocker installed on your system\nWorks on all operating systems (Windows, macOS, Linux)\n\nOption B: Conda\n\nMiniforge installed\nconda-lock installed (run conda install conda-lock)\nOnly available for: linux-64, osx-64, osx-arm64"
   },
   {
     "objectID": "tutorial/getting-started.html#installation",
     "href": "tutorial/getting-started.html#installation",
     "title": "00. Getting Started",
     "section": "Installation",
-    "text": "Installation\n\nClone this repository:\n\ngit clone https://github.com/skysheng7/awp-arbutus-login.git\ncd awp-arbutus-login\n\nCreate the conda environment using one of the following methods:\n\nUsers with linux-64, osx-64, or osx-arm64 operating systems: use conda-lock (recommended):\nconda-lock install -n arbutus conda-lock.yml\nUsers with other operating systems (e.g., win-64): use environment.yml directly:\nconda env create -f environment.yml\n\nActivate the environment:\n\nconda activate arbutus"
+    "text": "Installation\n\nStep 1: Clone the Repository\ngit clone https://github.com/skysheng7/awp-arbutus-login.git\ncd awp-arbutus-login\n\n\nStep 2: Set Up Your Environment\nChoose the method that matches your prerequisites:\n\n\n\n\n\n\nOption 1: Using Docker (Recommended)\n\n\n\n\n\nAdvantages: Works on all operating systems, consistent environment across platforms\n\nStart the Docker container:\n\ndocker compose run --rm arbutus_python\nOr use the Make shortcut:\nmake docker\n\nYou will enter a bash shell inside the container. Your prompt will look like:\n(arbutus) root@e5d14c9ca3cc:/#\nWhen finished, exit the container:\n\nType exit + press Enter to leave the bash shell\nRun docker compose rm to remove the container\n\n\n\n\n\n\n\n\n\n\n\nOption 2: Using conda-lock\n\n\n\n\n\nPlatforms: linux-64, osx-64, osx-arm64 only\nAdvantages: Reproducible environment with locked dependencies\nconda-lock install -n arbutus conda-lock.yml\nconda activate arbutus\n\n\n\n\n\n\n\n\n\nOption 3: Using environment.yml\n\n\n\n\n\nPlatforms: linux-64, osx-64, osx-arm64 only\nAdvantages: Simpler setup\nconda env create -f environment.yml\nconda activate arbutus"
   },
   {
     "objectID": "tutorial/getting-started.html#next-steps",

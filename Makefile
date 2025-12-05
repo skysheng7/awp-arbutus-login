@@ -1,4 +1,4 @@
-.PHONY: help update lock all clean
+.PHONY: help update lock env clean docker
 
 # Default conda environment name
 ENV_NAME ?= arbutus
@@ -18,8 +18,9 @@ help:
 	@echo "Available targets:"
 	@echo "  make update    - Export conda environment to environment.yml with version numbers"
 	@echo "  make lock      - Generate conda-lock.yml for all platforms"
-	@echo "  make all       - Update environment.yml and generate lock files (default)"
+	@echo "  make env       - Update environment.yml and generate lock files (default)"
 	@echo "  make clean     - Remove generated lock files"
+	@echo "  make docker    - Run Docker container with arbutus_python service"
 	@echo ""
 	@echo "Variables:"
 	@echo "  ENV_NAME       - Conda environment name (default: arbutus)"
@@ -42,10 +43,14 @@ lock:
 	@echo "Generating conda-lock.yml for platforms: $(PLATFORMS)..."
 	conda-lock lock --file $(YML_NAME) $(foreach platform,$(PLATFORMS),--platform $(platform))
 
-all: update lock
+env: update lock
 	@echo "Done! Updated $(YML_NAME) and generated conda-lock.yml for all platforms."
 
 clean:
 	@echo "Cleaning generated lock files..."
 	rm -f conda-lock.yml conda-*.lock
+
+docker:
+	@echo "Running Docker container with arbutus_python service..."
+	docker compose run --rm arbutus_python
 

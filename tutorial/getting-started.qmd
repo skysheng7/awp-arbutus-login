@@ -5,44 +5,101 @@ author: "Sky (Kehan) Sheng"
 
 ## Prerequisites
 
+### Account Requirements
+
 Before you begin, ensure you have:
 
-* [**Miniforge**](https://conda-forge.org/download/) installed
-* `conda-lock` installed (install with `conda install conda-lock`)
 * An account with [Digital Research Alliance of Canada](https://www.alliancecan.ca/en/our-services/advanced-research-computing/account-management/apply-account)
 * An account with [Arbutus](https://docs.google.com/forms/d/e/1FAIpQLSeU_BoRk5cEz3AvVLf3e9yZJq-OvcFCQ-mg7p4AWXmUkd5rTw/viewform)
 * The ability to login to [Arbutus](https://arbutus.cloud.computecanada.ca/auth/login/?next=/)
 
+### Software Requirements
+
+To recreate the computational environment, you will need **ONE** of the following:
+
+**Option A: Docker (Recommended)**
+
+* [Docker](https://docs.docker.com/get-docker/) installed on your computer
+* Works on all operating systems (Windows, macOS, Linux)
+
+**Option B: Conda**
+
+* [Miniforge](https://conda-forge.org/download/) installed
+* `conda-lock` installed (run `conda install conda-lock` if not installed)
+* Only available for: linux-64, osx-64, osx-arm64
+
 ## Installation
 
-1. Clone this repository:
+### Step 1: Clone the Repository
 
 ```bash
 git clone https://github.com/skysheng7/awp-arbutus-login.git
 cd awp-arbutus-login
 ```
 
-2. Create the conda environment using one of the following methods:
+### Step 2: Set Up Your Environment
 
-**Users with linux-64, osx-64, or osx-arm64 operating systems: use conda-lock (recommended):**
+Choose the method that matches your prerequisites:
+
+::: {.callout-note collapse="true"}
+## Option 1: Using Docker (Recommended)
+
+**Advantages:** Works on all operating systems, consistent environment across platforms
+
+1. Start the Docker container:
+
+```bash
+docker compose run --rm arbutus_python
+```
+
+Or use the Make shortcut:
+
+```bash
+make docker
+```
+
+2. You will enter a bash shell inside the container. Your prompt will look like:
+   ```
+   (arbutus) root@e5d14c9ca3cc:/#
+   ```
+
+3. When finished, exit the container:
+   - Type `exit` + press `Enter` to leave the bash shell
+   - Run `docker compose rm` to remove the container
+
+:::
+
+::: {.callout-note collapse="true"}
+## Option 2: Using conda-lock
+
+**Platforms:** linux-64, osx-64, osx-arm64 only
+
+**Advantages:** Reproducible environment with locked dependencies
+
 ```bash
 conda-lock install -n arbutus conda-lock.yml
-```
-
-**Users with other operating systems (e.g., win-64): use environment.yml directly:**
-```bash
-conda env create -f environment.yml
-```
-
-3. Activate the environment:
-
-```bash
 conda activate arbutus
 ```
+
+:::
+
+::: {.callout-note collapse="true"}
+## Option 3: Using environment.yml
+
+**Platforms:** linux-64, osx-64, osx-arm64 only
+
+**Advantages:** Simpler setup
+
+```bash
+conda env create -f environment.yml
+conda activate arbutus
+```
+
+:::
 
 ## Next Steps
 
 Once your environment is set up, proceed to:
 
-- [Arbutus Authentication](arbutus-auth.html) - Set up OpenStack authentication
+* [Arbutus Authentication](arbutus-auth.html) - Set up OpenStack authentication
 
