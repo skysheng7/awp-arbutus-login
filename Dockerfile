@@ -1,5 +1,5 @@
 # build on top of template of minimal notebook
-FROM mcr.microsoft.com/devcontainers/miniconda:3
+FROM continuumio/miniconda3:8b56fc8564f7
 
 # copy all conda environment dependencies
 COPY conda-lock.yml /tmp/conda-lock.yml
@@ -10,6 +10,5 @@ RUN conda install -n base -c conda-forge conda-lock -y \
     && conda clean --all -y -f
 
 # Switch to vscode user and set up conda activation
-USER vscode
 RUN conda init bash \
     && echo "conda activate arbutus" >> ~/.bashrc
