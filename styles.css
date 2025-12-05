@@ -1,0 +1,42 @@
+/* Custom styles for Arbutus documentation */
+
+/* Code block styling */
+pre {
+  border-radius: 4px;
+  padding: 1em;
+}
+
+/* Warning boxes */
+blockquote {
+  border-left: 4px solid #ff9800;
+  padding-left: 1em;
+  margin-left: 0;
+}
+
+/* Table styling */
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1em 0;
+}
+
+table th,
+table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+table th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+/* Command examples */
+code {
+  background-color: #f4f4f4;
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-family: 'Courier New', monospace;
+}
+

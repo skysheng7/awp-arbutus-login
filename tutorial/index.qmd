@@ -1,0 +1,33 @@
+---
+title: "Arbutus Cloud Computing Guide"
+author: "Sky (Kehan) Sheng"
+---
+
+## Welcome
+
+This guide provides comprehensive instructions for working with Arbutus, Compute Canada's OpenStack cloud platform, and managing object storage with S3.
+
+## Quick Start
+
+1. **[Getting Started](getting-started.html)** - Prerequisites and installation
+2. **[Arbutus Authentication](arbutus-auth.html)** - Setting up OpenStack authentication
+3. **[S3 Storage Setup](s3-setup.html)** - Configuring s3cmd for object storage
+4. **[S3 Operations](s3-operations.html)** - Working with buckets and files
+5. **[Command Cheatsheet](cheatsheet.html)** - Quick reference for common commands
+
+## What is Arbutus?
+
+Arbutus is Compute Canada's OpenStack cloud platform that provides:
+
+- Virtual machines and compute resources
+- Object storage (S3-compatible)
+- Networking and security groups
+- Image management
+
+## Additional Resources
+
+- [OpenStack CLI Guide](https://docs.alliancecan.ca/wiki/OpenStack_command_line_clients)
+- [Digital Research Alliance of Canada Documentation](https://docs.computecanada.ca/)
+- [OpenStack Client Documentation](https://docs.openstack.org/python-openstackclient/latest/)
+- [s3cmd setup](https://docs.alliancecan.ca/wiki/Accessing_object_storage_with_s3cmd)
+

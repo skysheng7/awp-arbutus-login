@@ -12,7 +12,7 @@ YML_NAME ?= environment.yml
 # Platforms to lock for (leave empty to use conda-lock default multi-platform)
 # Note: win-64 excluded by default because s3cmd requires Unix (__unix dependency)
 # To include Windows, remove s3cmd from environment.yml or make it platform-specific
-PLATFORMS := linux-64 osx-64 osx-arm64 linux-aarch64
+PLATFORMS := linux-64 osx-64 osx-arm64
 
 help:
 	@echo "Available targets:"

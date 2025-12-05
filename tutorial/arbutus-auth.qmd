@@ -1,0 +1,41 @@
+---
+title: "01. Arbutus Authentication"
+author: "Sky (Kehan) Sheng"
+---
+
+## Download OpenStack RC File
+
+1. Login to [Arbutus](https://arbutus.cloud.computecanada.ca/auth/login/?next=/)
+2. Click on "API Access" on the left panel
+3. Click on "Download OpenStack RC File"
+4. Click on "OpenStack RC File" in the dropdown menu
+
+## Configure Credentials
+
+1. Rename the downloaded file to `def-ubcawp-dev-openrc.sh` and place it in the repository root directory.
+
+   > ⚠️ **Security Warning:** DO NOT share your OpenStack RC File with anyone. Never push this to GitHub. This file is already included in `.gitignore` to prevent accidental commits.
+
+2. Source the OpenStack credentials script from your terminal:
+
+```bash
+source def-ubcawp-dev-openrc.sh
+```
+
+You will be prompted to enter your OpenStack password. Enter your password when prompted.
+
+## Verification
+
+Verify that you're authenticated by running the following command:
+
+**List available Docker images:**
+```bash
+openstack image list
+```
+
+If this command executes successfully, you are authenticated and ready to use OpenStack commands.
+
+## Next Steps
+
+- [S3 Storage Setup](s3-setup.html) - Configure object storage access
+

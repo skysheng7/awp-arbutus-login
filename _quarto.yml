@@ -1,0 +1,27 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: "Arbutus Cloud Computing Guide"
+  navbar:
+    left:
+      - href: docs/index.html
+        text: Home
+      - href: docs/getting-started.html
+        text: Getting Started
+      - href: docs/arbutus-auth.html
+        text: Arbutus Authentication
+      - href: docs/s3-setup.html
+        text: S3 Storage Setup
+      - href: docs/s3-operations.html
+        text: S3 Operations
+      - href: docs/cheatsheet.html
+        text: Command Cheatsheet
+
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+    toc: true
+    toc-depth: 3

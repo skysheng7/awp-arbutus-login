@@ -8,4 +8,6 @@ dependencies:
 - pandas=2.3.3
 - conda-lock=3.0.4
 - s3cmd=2.4.0
+- gnupg=2.5.14
+- quarto=1.8.26
 prefix: /Users/skysheng/miniforge3/envs/arbutus
