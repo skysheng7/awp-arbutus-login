@@ -1,6 +1,6 @@
 services:
   analysis-env:
-    image: skysheng7/arbutus_python:8963696
+    image: skysheng7/arbutus_python:115e735
     volumes:
       - .:/workspace
     deploy:
