@@ -11,7 +11,6 @@ on:
     paths:
       - 'Dockerfile'
       - 'conda-lock.yml'
-      - '.devcontainer/devcontainer.json'
 
 jobs:
   push_to_registry:
@@ -44,12 +43,3 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
-
-      - name: Commit and push updated docker-compose.yml
-        if: success()
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add docker-compose.yml
-          git commit -m "Update docker-compose.yml with new image tag"
-          git push
