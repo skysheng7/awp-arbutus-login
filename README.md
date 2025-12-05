@@ -1,6 +1,8 @@
 # Arbutus Cloud Computing Guide
 
-A tutorial repository for logging into Arbutus, Compute Canada's OpenStack cloud platform, and managing object storage with S3.
+Aurthor: Sky Kehan Sheng
+
+Description: A tutorial repository for logging into Arbutus, Compute Canada's OpenStack cloud platform, and managing object storage with S3.
 
 ## Quick Start
 
@@ -18,7 +20,7 @@ conda activate arbutus
 
 ## Documentation
 
-📚 **Full documentation is available as Quarto website files in the repository root.**
+📚 **Full documentation is hosted here:** [http://www.skysheng.io/awp-arbutus-login/](http://www.skysheng.io/awp-arbutus-login/)
 
 ### Documentation Sections
 
