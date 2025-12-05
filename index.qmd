@@ -1,11 +1,18 @@
 ---
 title: "Arbutus Cloud Computing Guide"
-author: "Sky (Kehan) Sheng"
+author: Sky (Kehan) Sheng
 ---
 
 ## Welcome
 
 This guide provides comprehensive instructions for working with Arbutus, Compute Canada's OpenStack cloud platform, and managing object storage with S3.
+
+## Author
+
+**Sky (Kehan) Sheng** 
+
+* University of British Columbia Animal Welfare Program
+* [skysheng.io](https://www.skysheng.io)
 
 ## Quick Start
 

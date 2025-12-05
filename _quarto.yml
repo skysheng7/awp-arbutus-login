@@ -17,15 +17,7 @@ website:
       - href: tutorial/s3-operations.html
         text: 03. S3 Operations
       - href: tutorial/cheatsheet.html
-        text: Command Cheatsheet
-  sidebar:
-    contents:
-      - index.html
-      - tutorial/getting-started.html
-      - tutorial/arbutus-auth.html
-      - tutorial/s3-setup.html
-      - tutorial/s3-operations.html
-      - tutorial/cheatsheet.html
+        text: 04. Command Cheatsheet
 
 format:
   html:
