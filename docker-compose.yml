@@ -1,0 +1,10 @@
+services:
+  analysis-env:
+    image: skysheng7/arbutus_python:8963696
+    volumes:
+      - .:/workspace
+    deploy:
+      resources:
+        limits:
+          memory: 5G
+    platform: linux/amd64

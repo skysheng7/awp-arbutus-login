@@ -9,6 +9,6 @@ RUN conda install -n base -c conda-forge conda-lock -y \
     && conda-lock install --name arbutus /tmp/conda-lock.yml \
     && conda clean --all -y -f
 
-# Switch to vscode user and set up conda activation
+# set up conda activation
 RUN conda init bash \
     && echo "conda activate arbutus" >> ~/.bashrc
