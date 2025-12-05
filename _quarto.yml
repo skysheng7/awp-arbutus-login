@@ -6,7 +6,7 @@ website:
   title: "Arbutus Cloud Computing Guide"
   navbar:
     left:
-      - href: tutorial/index.html
+      - href: index.html
         text: Home
       - href: tutorial/getting-started.html
         text: 00. Getting Started
@@ -18,6 +18,14 @@ website:
         text: 03. S3 Operations
       - href: tutorial/cheatsheet.html
         text: Command Cheatsheet
+  sidebar:
+    contents:
+      - index.qmd
+      - tutorial/getting-started.qmd
+      - tutorial/arbutus-auth.qmd
+      - tutorial/s3-setup.qmd
+      - tutorial/s3-operations.qmd
+      - tutorial/cheatsheet.qmd
 
 format:
   html:
