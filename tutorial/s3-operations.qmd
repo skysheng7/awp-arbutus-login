@@ -7,6 +7,7 @@ title: "03. S3 Operations"
 Buckets contain files. Bucket names must be unique across the Arbutus object storage solution. 
 
 **Valid bucket names** may only use:
+
 - Upper case characters (A-Z)
 - Lower case characters (a-z)
 - Digits (0-9)
