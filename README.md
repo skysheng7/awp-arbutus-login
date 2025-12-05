@@ -4,23 +4,9 @@ Aurthor: Sky Kehan Sheng
 
 Description: A tutorial repository for logging into Arbutus, Compute Canada's OpenStack cloud platform, and managing object storage with S3.
 
-## Quick Start
-
-1. Clone this repository:
-```bash
-git clone https://github.com/skysheng7/awp-arbutus-login.git
-cd awp-arbutus-login
-```
-
-2. Create and activate the conda environment:
-```bash
-conda-lock install -n arbutus conda-lock.yml
-conda activate arbutus
-```
-
 ## Documentation
 
-📚 **Full documentation is hosted here:** [http://www.skysheng.io/awp-arbutus-login/](http://www.skysheng.io/awp-arbutus-login/)
+**Full Tutorial is hosted here:** [http://www.skysheng.io/awp-arbutus-login/](http://www.skysheng.io/awp-arbutus-login/)
 
 ### Documentation Sections
 

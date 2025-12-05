@@ -24,12 +24,12 @@ cd awp-arbutus-login
 
 2. Create the conda environment using one of the following methods:
 
-**Using conda-lock (recommended):**
+**Users with linux-64, osx-64, or osx-arm64 operating systems: use conda-lock (recommended):**
 ```bash
 conda-lock install -n arbutus conda-lock.yml
 ```
 
-**Or using environment.yml directly:**
+**Users with other operating systems (e.g., win-64): use environment.yml directly:**
 ```bash
 conda env create -f environment.yml
 ```

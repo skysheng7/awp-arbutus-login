@@ -88,7 +88,7 @@
     "href": "tutorial/getting-started.html#installation",
     "title": "00. Getting Started",
     "section": "Installation",
-    "text": "Installation\n\nClone this repository:\n\ngit clone https://github.com/skysheng7/awp-arbutus-login.git\ncd awp-arbutus-login\n\nCreate the conda environment using one of the following methods:\n\nUsing conda-lock (recommended):\nconda-lock install -n arbutus conda-lock.yml\nOr using environment.yml directly:\nconda env create -f environment.yml\n\nActivate the environment:\n\nconda activate arbutus"
+    "text": "Installation\n\nClone this repository:\n\ngit clone https://github.com/skysheng7/awp-arbutus-login.git\ncd awp-arbutus-login\n\nCreate the conda environment using one of the following methods:\n\nUsers with linux-64, osx-64, or osx-arm64 operating systems: use conda-lock (recommended):\nconda-lock install -n arbutus conda-lock.yml\nUsers with other operating systems (e.g., win-64): use environment.yml directly:\nconda env create -f environment.yml\n\nActivate the environment:\n\nconda activate arbutus"
   },
   {
     "objectID": "tutorial/getting-started.html#next-steps",
