@@ -16,6 +16,31 @@ Description: A tutorial repository for logging into Arbutus, Compute Canada's Op
 - **[S3 Operations](tutorial/s3-operations.qmd)** - Working with buckets and files
 - **[Command Cheatsheet](tutorial/cheatsheet.qmd)** - Quick reference for common commands
 
+## Using the Makefile
+
+This project includes a Makefile to simplify common tasks:
+
+```bash
+# View all available commands
+make help
+
+# Run Docker container with the environment
+make docker
+
+# Update environment.yml from your conda environment
+make update
+
+# Generate cross-platform conda-lock files
+make lock
+
+# Update environment.yml and generate lock files (both update + lock)
+make env
+```
+
+**Common workflow:**
+1. Run `make docker` to start the containerized environment
+2. Use `make env` to update dependencies after modifying the environment
+
 ## Additional Resources
 
 - [OpenStack CLI Guide](https://docs.alliancecan.ca/wiki/OpenStack_command_line_clients)
