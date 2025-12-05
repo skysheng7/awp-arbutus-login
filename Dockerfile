@@ -1,5 +1,5 @@
 # build on top of template of minimal notebook
-FROM continuumio/miniconda3:8b56fc8564f7
+FROM continuumio/miniconda3:25.3.1-1
 
 # copy all conda environment dependencies
 COPY conda-lock.yml /tmp/conda-lock.yml
