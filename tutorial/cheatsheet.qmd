@@ -1,6 +1,6 @@
 ---
-title: "Command Cheatsheet"
-author: "Sky (Kehan) Sheng"
+title: "04. Command Cheatsheet"
+
 ---
 
 ## OpenStack Commands

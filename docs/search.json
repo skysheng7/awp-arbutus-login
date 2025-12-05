@@ -4,329 +4,209 @@
     "href": "index.html",
     "title": "Arbutus Cloud Computing Guide",
     "section": "",
-    "text": "This guide provides comprehensive instructions for working with Arbutus, Compute Canada’s OpenStack cloud platform, and managing object storage with S3.",
-    "crumbs": [
-      "Home",
-      "Arbutus Cloud Computing Guide"
-    ]
+    "text": "This guide provides comprehensive instructions for working with Arbutus, Compute Canada’s OpenStack cloud platform, and managing object storage with S3."
   },
   {
     "objectID": "index.html#welcome",
     "href": "index.html#welcome",
     "title": "Arbutus Cloud Computing Guide",
     "section": "",
-    "text": "This guide provides comprehensive instructions for working with Arbutus, Compute Canada’s OpenStack cloud platform, and managing object storage with S3.",
-    "crumbs": [
-      "Home",
-      "Arbutus Cloud Computing Guide"
-    ]
+    "text": "This guide provides comprehensive instructions for working with Arbutus, Compute Canada’s OpenStack cloud platform, and managing object storage with S3."
   },
   {
     "objectID": "index.html#quick-start",
     "href": "index.html#quick-start",
     "title": "Arbutus Cloud Computing Guide",
     "section": "Quick Start",
-    "text": "Quick Start\n\nGetting Started - Prerequisites and installation\nArbutus Authentication - Setting up OpenStack authentication\nS3 Storage Setup - Configuring s3cmd for object storage\nS3 Operations - Working with buckets and files\nCommand Cheatsheet - Quick reference for common commands",
-    "crumbs": [
-      "Home",
-      "Arbutus Cloud Computing Guide"
-    ]
+    "text": "Quick Start\n\nGetting Started - Prerequisites and installation\nArbutus Authentication - Setting up OpenStack authentication\nS3 Storage Setup - Configuring s3cmd for object storage\nS3 Operations - Working with buckets and files\nCommand Cheatsheet - Quick reference for common commands"
   },
   {
     "objectID": "index.html#what-is-arbutus",
     "href": "index.html#what-is-arbutus",
     "title": "Arbutus Cloud Computing Guide",
     "section": "What is Arbutus?",
-    "text": "What is Arbutus?\nArbutus is Compute Canada’s OpenStack cloud platform that provides:\n\nVirtual machines and compute resources\nObject storage (S3-compatible)\nNetworking and security groups\nImage management",
-    "crumbs": [
-      "Home",
-      "Arbutus Cloud Computing Guide"
-    ]
+    "text": "What is Arbutus?\nArbutus is Compute Canada’s OpenStack cloud platform that provides:\n\nVirtual machines and compute resources\nObject storage (S3-compatible)\nNetworking and security groups\nImage management"
   },
   {
     "objectID": "index.html#additional-resources",
     "href": "index.html#additional-resources",
     "title": "Arbutus Cloud Computing Guide",
     "section": "Additional Resources",
-    "text": "Additional Resources\n\nOpenStack CLI Guide\nDigital Research Alliance of Canada Documentation\nOpenStack Client Documentation\ns3cmd setup",
-    "crumbs": [
-      "Home",
-      "Arbutus Cloud Computing Guide"
-    ]
+    "text": "Additional Resources\n\nOpenStack CLI Guide\nDigital Research Alliance of Canada Documentation\nOpenStack Client Documentation\ns3cmd setup"
   },
   {
     "objectID": "tutorial/cheatsheet.html",
     "href": "tutorial/cheatsheet.html",
-    "title": "Command Cheatsheet",
+    "title": "04. Command Cheatsheet",
     "section": "",
-    "text": "# Source OpenStack credentials\nsource def-ubcawp-dev-openrc.sh\n\n# Verify authentication\nopenstack image list\n\n\n\n# Create EC2 credentials for S3 access\nopenstack ec2 credentials create\n\n# List EC2 credentials\nopenstack ec2 credentials list\n\n# Delete EC2 credentials\nopenstack ec2 credentials delete &lt;credential-id&gt;",
-    "crumbs": [
-      "Home",
-      "Command Cheatsheet"
-    ]
+    "text": "# Source OpenStack credentials\nsource def-ubcawp-dev-openrc.sh\n\n# Verify authentication\nopenstack image list\n\n\n\n# Create EC2 credentials for S3 access\nopenstack ec2 credentials create\n\n# List EC2 credentials\nopenstack ec2 credentials list\n\n# Delete EC2 credentials\nopenstack ec2 credentials delete &lt;credential-id&gt;"
   },
   {
     "objectID": "tutorial/cheatsheet.html#openstack-commands",
     "href": "tutorial/cheatsheet.html#openstack-commands",
-    "title": "Command Cheatsheet",
+    "title": "04. Command Cheatsheet",
     "section": "",
-    "text": "# Source OpenStack credentials\nsource def-ubcawp-dev-openrc.sh\n\n# Verify authentication\nopenstack image list\n\n\n\n# Create EC2 credentials for S3 access\nopenstack ec2 credentials create\n\n# List EC2 credentials\nopenstack ec2 credentials list\n\n# Delete EC2 credentials\nopenstack ec2 credentials delete &lt;credential-id&gt;",
-    "crumbs": [
-      "Home",
-      "Command Cheatsheet"
-    ]
+    "text": "# Source OpenStack credentials\nsource def-ubcawp-dev-openrc.sh\n\n# Verify authentication\nopenstack image list\n\n\n\n# Create EC2 credentials for S3 access\nopenstack ec2 credentials create\n\n# List EC2 credentials\nopenstack ec2 credentials list\n\n# Delete EC2 credentials\nopenstack ec2 credentials delete &lt;credential-id&gt;"
   },
   {
     "objectID": "tutorial/cheatsheet.html#s3-commands-s3cmd",
     "href": "tutorial/cheatsheet.html#s3-commands-s3cmd",
-    "title": "Command Cheatsheet",
+    "title": "04. Command Cheatsheet",
     "section": "S3 Commands (s3cmd)",
-    "text": "S3 Commands (s3cmd)\n\nConfiguration\n# Configure s3cmd\ns3cmd --configure\n\n# Test configuration\ns3cmd ls\n\n\nBucket Operations\n# Create a bucket\ns3cmd mb s3://BUCKET_NAME/\n\n# List all buckets\ns3cmd ls\n\n# List contents of a bucket\ns3cmd ls s3://BUCKET_NAME/\n\n# Get bucket information\ns3cmd info s3://BUCKET_NAME/\n\n# Delete an empty bucket\ns3cmd rb s3://BUCKET_NAME/\n\n# Delete a bucket and all its contents\ns3cmd rb --recursive s3://BUCKET_NAME/\n\n\nFile Operations\n# Upload a file\ns3cmd put --guess-mime-type FILE_NAME.dat s3://BUCKET_NAME/FILE_NAME.dat\n\n# Upload a file with custom path\ns3cmd put --guess-mime-type local_file.txt s3://BUCKET_NAME/path/to/remote_file.txt\n\n# Upload a directory recursively\ns3cmd put --recursive --guess-mime-type local_dir/ s3://BUCKET_NAME/\n\n# Download a file\ns3cmd get s3://BUCKET_NAME/FILE_NAME.dat local_file.dat\n\n# Download a directory recursively\ns3cmd get --recursive s3://BUCKET_NAME/remote_dir/ local_dir/\n\n# Delete a file\ns3cmd rm s3://BUCKET_NAME/FILE_NAME.dat\n\n# Delete multiple files (pattern matching)\ns3cmd del s3://BUCKET_NAME/*.tmp\n\n# Delete directory recursively\ns3cmd del --recursive s3://BUCKET_NAME/path/to/dir/\n\n\nAccess Control\n# Make bucket public (recursive)\ns3cmd setacl --acl-public -r s3://BUCKET_NAME/\n\n# Make bucket private\ns3cmd setacl --acl-private s3://BUCKET_NAME/\n\n# Set ACL for specific file\ns3cmd setacl --acl-public s3://BUCKET_NAME/FILE_NAME.dat\n\n# Get ACL information\ns3cmd info s3://BUCKET_NAME/\n\n\nSynchronization\n# Sync local directory to bucket\ns3cmd sync local_dir/ s3://BUCKET_NAME/remote_dir/\n\n# Sync bucket to local directory\ns3cmd sync s3://BUCKET_NAME/remote_dir/ local_dir/\n\n# Sync with exclusions\ns3cmd sync --exclude '*.tmp' --exclude '*.log' local_dir/ s3://BUCKET_NAME/\n\n\nUseful Options\n# Dry run (see what would happen without executing)\ns3cmd --dry-run put file.txt s3://BUCKET_NAME/\n\n# Verbose output\ns3cmd -v put file.txt s3://BUCKET_NAME/\n\n# Force operation (skip confirmation)\ns3cmd --force put file.txt s3://BUCKET_NAME/\n\n# Show progress\ns3cmd --progress put large_file.dat s3://BUCKET_NAME/",
-    "crumbs": [
-      "Home",
-      "Command Cheatsheet"
-    ]
+    "text": "S3 Commands (s3cmd)\n\nConfiguration\n# Configure s3cmd\ns3cmd --configure\n\n# Test configuration\ns3cmd ls\n\n\nBucket Operations\n# Create a bucket\ns3cmd mb s3://BUCKET_NAME/\n\n# List all buckets\ns3cmd ls\n\n# List contents of a bucket\ns3cmd ls s3://BUCKET_NAME/\n\n# Get bucket information\ns3cmd info s3://BUCKET_NAME/\n\n# Delete an empty bucket\ns3cmd rb s3://BUCKET_NAME/\n\n# Delete a bucket and all its contents\ns3cmd rb --recursive s3://BUCKET_NAME/\n\n\nFile Operations\n# Upload a file\ns3cmd put --guess-mime-type FILE_NAME.dat s3://BUCKET_NAME/FILE_NAME.dat\n\n# Upload a file with custom path\ns3cmd put --guess-mime-type local_file.txt s3://BUCKET_NAME/path/to/remote_file.txt\n\n# Upload a directory recursively\ns3cmd put --recursive --guess-mime-type local_dir/ s3://BUCKET_NAME/\n\n# Download a file\ns3cmd get s3://BUCKET_NAME/FILE_NAME.dat local_file.dat\n\n# Download a directory recursively\ns3cmd get --recursive s3://BUCKET_NAME/remote_dir/ local_dir/\n\n# Delete a file\ns3cmd rm s3://BUCKET_NAME/FILE_NAME.dat\n\n# Delete multiple files (pattern matching)\ns3cmd del s3://BUCKET_NAME/*.tmp\n\n# Delete directory recursively\ns3cmd del --recursive s3://BUCKET_NAME/path/to/dir/\n\n\nAccess Control\n# Make bucket public (recursive)\ns3cmd setacl --acl-public -r s3://BUCKET_NAME/\n\n# Make bucket private\ns3cmd setacl --acl-private s3://BUCKET_NAME/\n\n# Set ACL for specific file\ns3cmd setacl --acl-public s3://BUCKET_NAME/FILE_NAME.dat\n\n# Get ACL information\ns3cmd info s3://BUCKET_NAME/\n\n\nSynchronization\n# Sync local directory to bucket\ns3cmd sync local_dir/ s3://BUCKET_NAME/remote_dir/\n\n# Sync bucket to local directory\ns3cmd sync s3://BUCKET_NAME/remote_dir/ local_dir/\n\n# Sync with exclusions\ns3cmd sync --exclude '*.tmp' --exclude '*.log' local_dir/ s3://BUCKET_NAME/\n\n\nUseful Options\n# Dry run (see what would happen without executing)\ns3cmd --dry-run put file.txt s3://BUCKET_NAME/\n\n# Verbose output\ns3cmd -v put file.txt s3://BUCKET_NAME/\n\n# Force operation (skip confirmation)\ns3cmd --force put file.txt s3://BUCKET_NAME/\n\n# Show progress\ns3cmd --progress put large_file.dat s3://BUCKET_NAME/"
   },
   {
     "objectID": "tutorial/cheatsheet.html#quick-reference",
     "href": "tutorial/cheatsheet.html#quick-reference",
-    "title": "Command Cheatsheet",
+    "title": "04. Command Cheatsheet",
     "section": "Quick Reference",
-    "text": "Quick Reference\n\n\n\n\n\n\n\nTask\nCommand\n\n\n\n\nCreate bucket\ns3cmd mb s3://BUCKET_NAME/\n\n\nList buckets\ns3cmd ls\n\n\nUpload file\ns3cmd put FILE s3://BUCKET_NAME/FILE\n\n\nDownload file\ns3cmd get s3://BUCKET_NAME/FILE LOCAL_FILE\n\n\nDelete file\ns3cmd rm s3://BUCKET_NAME/FILE\n\n\nMake public\ns3cmd setacl --acl-public -r s3://BUCKET_NAME/\n\n\nMake private\ns3cmd setacl --acl-private s3://BUCKET_NAME/\n\n\nSync directory\ns3cmd sync LOCAL_DIR/ s3://BUCKET_NAME/REMOTE_DIR/",
-    "crumbs": [
-      "Home",
-      "Command Cheatsheet"
-    ]
+    "text": "Quick Reference\n\n\n\n\n\n\n\nTask\nCommand\n\n\n\n\nCreate bucket\ns3cmd mb s3://BUCKET_NAME/\n\n\nList buckets\ns3cmd ls\n\n\nUpload file\ns3cmd put FILE s3://BUCKET_NAME/FILE\n\n\nDownload file\ns3cmd get s3://BUCKET_NAME/FILE LOCAL_FILE\n\n\nDelete file\ns3cmd rm s3://BUCKET_NAME/FILE\n\n\nMake public\ns3cmd setacl --acl-public -r s3://BUCKET_NAME/\n\n\nMake private\ns3cmd setacl --acl-private s3://BUCKET_NAME/\n\n\nSync directory\ns3cmd sync LOCAL_DIR/ s3://BUCKET_NAME/REMOTE_DIR/"
   },
   {
     "objectID": "tutorial/getting-started.html",
     "href": "tutorial/getting-started.html",
     "title": "00. Getting Started",
     "section": "",
-    "text": "Before you begin, ensure you have:\n\nMiniforge installed\nconda-lock installed (install with conda install conda-lock)\nAn account with Digital Research Alliance of Canada\nAn account with Arbutus\nThe ability to login to Arbutus",
-    "crumbs": [
-      "Home",
-      "00. Getting Started"
-    ]
+    "text": "Before you begin, ensure you have:\n\nMiniforge installed\nconda-lock installed (install with conda install conda-lock)\nAn account with Digital Research Alliance of Canada\nAn account with Arbutus\nThe ability to login to Arbutus"
   },
   {
     "objectID": "tutorial/getting-started.html#prerequisites",
     "href": "tutorial/getting-started.html#prerequisites",
     "title": "00. Getting Started",
     "section": "",
-    "text": "Before you begin, ensure you have:\n\nMiniforge installed\nconda-lock installed (install with conda install conda-lock)\nAn account with Digital Research Alliance of Canada\nAn account with Arbutus\nThe ability to login to Arbutus",
-    "crumbs": [
-      "Home",
-      "00. Getting Started"
-    ]
+    "text": "Before you begin, ensure you have:\n\nMiniforge installed\nconda-lock installed (install with conda install conda-lock)\nAn account with Digital Research Alliance of Canada\nAn account with Arbutus\nThe ability to login to Arbutus"
   },
   {
     "objectID": "tutorial/getting-started.html#installation",
     "href": "tutorial/getting-started.html#installation",
     "title": "00. Getting Started",
     "section": "Installation",
-    "text": "Installation\n\nClone this repository:\n\ngit clone https://github.com/skysheng7/awp-arbutus-login.git\ncd awp-arbutus-login\n\nCreate the conda environment using one of the following methods:\n\nUsing conda-lock (recommended):\nconda-lock install -n arbutus conda-lock.yml\nOr using environment.yml directly:\nconda env create -f environment.yml\n\nActivate the environment:\n\nconda activate arbutus",
-    "crumbs": [
-      "Home",
-      "00. Getting Started"
-    ]
+    "text": "Installation\n\nClone this repository:\n\ngit clone https://github.com/skysheng7/awp-arbutus-login.git\ncd awp-arbutus-login\n\nCreate the conda environment using one of the following methods:\n\nUsing conda-lock (recommended):\nconda-lock install -n arbutus conda-lock.yml\nOr using environment.yml directly:\nconda env create -f environment.yml\n\nActivate the environment:\n\nconda activate arbutus"
   },
   {
     "objectID": "tutorial/getting-started.html#next-steps",
     "href": "tutorial/getting-started.html#next-steps",
     "title": "00. Getting Started",
     "section": "Next Steps",
-    "text": "Next Steps\nOnce your environment is set up, proceed to:\n\nArbutus Authentication - Set up OpenStack authentication",
-    "crumbs": [
-      "Home",
-      "00. Getting Started"
-    ]
+    "text": "Next Steps\nOnce your environment is set up, proceed to:\n\nArbutus Authentication - Set up OpenStack authentication"
   },
   {
     "objectID": "tutorial/arbutus-auth.html",
     "href": "tutorial/arbutus-auth.html",
     "title": "01. Arbutus Authentication",
     "section": "",
-    "text": "Login to Arbutus\nClick on “API Access” on the left panel\nClick on “Download OpenStack RC File”\nClick on “OpenStack RC File” in the dropdown menu",
-    "crumbs": [
-      "Home",
-      "01. Arbutus Authentication"
-    ]
+    "text": "Login to Arbutus\nClick on “API Access” on the left panel\nClick on “Download OpenStack RC File”\nClick on “OpenStack RC File” in the dropdown menu"
   },
   {
     "objectID": "tutorial/arbutus-auth.html#download-openstack-rc-file",
     "href": "tutorial/arbutus-auth.html#download-openstack-rc-file",
     "title": "01. Arbutus Authentication",
     "section": "",
-    "text": "Login to Arbutus\nClick on “API Access” on the left panel\nClick on “Download OpenStack RC File”\nClick on “OpenStack RC File” in the dropdown menu",
-    "crumbs": [
-      "Home",
-      "01. Arbutus Authentication"
-    ]
+    "text": "Login to Arbutus\nClick on “API Access” on the left panel\nClick on “Download OpenStack RC File”\nClick on “OpenStack RC File” in the dropdown menu"
   },
   {
     "objectID": "tutorial/arbutus-auth.html#configure-credentials",
     "href": "tutorial/arbutus-auth.html#configure-credentials",
     "title": "01. Arbutus Authentication",
     "section": "Configure Credentials",
-    "text": "Configure Credentials\n\nRename the downloaded file to def-ubcawp-dev-openrc.sh and place it in the repository root directory.\n\n⚠️ Security Warning: DO NOT share your OpenStack RC File with anyone. Never push this to GitHub. This file is already included in .gitignore to prevent accidental commits.\n\nSource the OpenStack credentials script from your terminal:\n\nsource def-ubcawp-dev-openrc.sh\nYou will be prompted to enter your OpenStack password. Enter your password when prompted.",
-    "crumbs": [
-      "Home",
-      "01. Arbutus Authentication"
-    ]
+    "text": "Configure Credentials\n\nRename the downloaded file to def-ubcawp-dev-openrc.sh and place it in the repository root directory.\n\n⚠️ Security Warning: DO NOT share your OpenStack RC File with anyone. Never push this to GitHub. This file is already included in .gitignore to prevent accidental commits.\n\nSource the OpenStack credentials script from your terminal:\n\nsource def-ubcawp-dev-openrc.sh\nYou will be prompted to enter your OpenStack password. Enter your password when prompted."
   },
   {
     "objectID": "tutorial/arbutus-auth.html#verification",
     "href": "tutorial/arbutus-auth.html#verification",
     "title": "01. Arbutus Authentication",
     "section": "Verification",
-    "text": "Verification\nVerify that you’re authenticated by running the following command:\nList available Docker images:\nopenstack image list\nIf this command executes successfully, you are authenticated and ready to use OpenStack commands.",
-    "crumbs": [
-      "Home",
-      "01. Arbutus Authentication"
-    ]
+    "text": "Verification\nVerify that you’re authenticated by running the following command:\nList available Docker images:\nopenstack image list\nIf this command executes successfully, you are authenticated and ready to use OpenStack commands."
   },
   {
     "objectID": "tutorial/arbutus-auth.html#next-steps",
     "href": "tutorial/arbutus-auth.html#next-steps",
     "title": "01. Arbutus Authentication",
     "section": "Next Steps",
-    "text": "Next Steps\n\nS3 Storage Setup - Configure object storage access",
-    "crumbs": [
-      "Home",
-      "01. Arbutus Authentication"
-    ]
+    "text": "Next Steps\n\nS3 Storage Setup - Configure object storage access"
   },
   {
     "objectID": "tutorial/s3-setup.html",
     "href": "tutorial/s3-setup.html",
     "title": "02. S3 Storage Setup",
     "section": "",
-    "text": "In order to manage your Arbutus Object Store, you need your own storage access ID & secret key. In terminal, create credentials using:\nopenstack ec2 credentials create\nThis will output your Access Key and Secret Key. Save these credentials securely - you’ll need them for the next step.",
-    "crumbs": [
-      "Home",
-      "02. S3 Storage Setup"
-    ]
+    "text": "In order to manage your Arbutus Object Store, you need your own storage access ID & secret key. In terminal, create credentials using:\nopenstack ec2 credentials create\nThis will output your Access Key and Secret Key. Save these credentials securely - you’ll need them for the next step."
   },
   {
     "objectID": "tutorial/s3-setup.html#create-ec2-credentials",
     "href": "tutorial/s3-setup.html#create-ec2-credentials",
     "title": "02. S3 Storage Setup",
     "section": "",
-    "text": "In order to manage your Arbutus Object Store, you need your own storage access ID & secret key. In terminal, create credentials using:\nopenstack ec2 credentials create\nThis will output your Access Key and Secret Key. Save these credentials securely - you’ll need them for the next step.",
-    "crumbs": [
-      "Home",
-      "02. S3 Storage Setup"
-    ]
+    "text": "In order to manage your Arbutus Object Store, you need your own storage access ID & secret key. In terminal, create credentials using:\nopenstack ec2 credentials create\nThis will output your Access Key and Secret Key. Save these credentials securely - you’ll need them for the next step."
   },
   {
     "objectID": "tutorial/s3-setup.html#configure-s3cmd",
     "href": "tutorial/s3-setup.html#configure-s3cmd",
     "title": "02. S3 Storage Setup",
     "section": "Configure s3cmd",
-    "text": "Configure s3cmd\nTo configure the s3cmd tool, use the command:\ns3cmd --configure\nThen make the following configurations using your credentials printed out in the terminal above:\nEnter new values or accept defaults in brackets with Enter.\nRefer to user manual for detailed description of all options.\n\nAccess key and Secret key are your identifiers for Amazon S3. Leave them empty for using the env variables.\nAccess Key []: 20_DIGIT_ACCESS_KEY\nSecret Key []: 40_DIGIT_SECRET_KEY\nDefault Region [US]:\n\nUse \"s3.amazonaws.com\" for S3 Endpoint and not modify it to the target Amazon S3.\nS3 Endpoint []: object-arbutus.cloud.computecanada.ca\n\nUse \"%(bucket)s.s3.amazonaws.com\" to the target Amazon S3. \"%(bucket)s\" and \"%(location)s\" vars can be used\nif the target S3 system supports dns based buckets.\nDNS-style bucket+hostname:port template for accessing a bucket []: object-arbutus.cloud.computecanada.ca\n\nEncryption password is used to protect your files from reading\nby unauthorized persons while in transfer to S3\nEncryption password []:\nPath to GPG program [/usr/bin/gpg]: \n\nWhen using secure HTTPS protocol all communication with Amazon S3\nservers is protected from 3rd party eavesdropping. This method is\nslower than plain HTTP, and can only be proxied with Python 2.7 or newer\nUse HTTPS protocol []: Yes\n\nOn some networks all internet access must go through a HTTP proxy.\nTry setting it here if you can't connect to S3 directly\nHTTP Proxy server name:\nImportant prompts:\n\nYou will be prompted for “Test access with supplied credentials?” → Answer “y”\nYou will be prompted for “Save settings? [y/N]” → Answer “y”",
-    "crumbs": [
-      "Home",
-      "02. S3 Storage Setup"
-    ]
+    "text": "Configure s3cmd\nTo configure the s3cmd tool, use the command:\ns3cmd --configure\nThen make the following configurations using your credentials printed out in the terminal above:\nEnter new values or accept defaults in brackets with Enter.\nRefer to user manual for detailed description of all options.\n\nAccess key and Secret key are your identifiers for Amazon S3. Leave them empty for using the env variables.\nAccess Key []: 20_DIGIT_ACCESS_KEY\nSecret Key []: 40_DIGIT_SECRET_KEY\nDefault Region [US]:\n\nUse \"s3.amazonaws.com\" for S3 Endpoint and not modify it to the target Amazon S3.\nS3 Endpoint []: object-arbutus.cloud.computecanada.ca\n\nUse \"%(bucket)s.s3.amazonaws.com\" to the target Amazon S3. \"%(bucket)s\" and \"%(location)s\" vars can be used\nif the target S3 system supports dns based buckets.\nDNS-style bucket+hostname:port template for accessing a bucket []: object-arbutus.cloud.computecanada.ca\n\nEncryption password is used to protect your files from reading\nby unauthorized persons while in transfer to S3\nEncryption password []:\nPath to GPG program [/usr/bin/gpg]: \n\nWhen using secure HTTPS protocol all communication with Amazon S3\nservers is protected from 3rd party eavesdropping. This method is\nslower than plain HTTP, and can only be proxied with Python 2.7 or newer\nUse HTTPS protocol []: Yes\n\nOn some networks all internet access must go through a HTTP proxy.\nTry setting it here if you can't connect to S3 directly\nHTTP Proxy server name:\nImportant prompts:\n\nYou will be prompted for “Test access with supplied credentials?” → Answer “y”\nYou will be prompted for “Save settings? [y/N]” → Answer “y”"
   },
   {
     "objectID": "tutorial/s3-setup.html#acknowledgments",
     "href": "tutorial/s3-setup.html#acknowledgments",
     "title": "02. S3 Storage Setup",
     "section": "Acknowledgments",
-    "text": "Acknowledgments\nThis tutorial is based on the s3cmd setup guide.",
-    "crumbs": [
-      "Home",
-      "02. S3 Storage Setup"
-    ]
+    "text": "Acknowledgments\nThis tutorial is based on the s3cmd setup guide."
   },
   {
     "objectID": "tutorial/s3-setup.html#next-steps",
     "href": "tutorial/s3-setup.html#next-steps",
     "title": "02. S3 Storage Setup",
     "section": "Next Steps",
-    "text": "Next Steps\nOnce s3cmd is configured, you can start working with object storage:\n\nS3 Operations - Create buckets, upload files, and manage access",
-    "crumbs": [
-      "Home",
-      "02. S3 Storage Setup"
-    ]
+    "text": "Next Steps\nOnce s3cmd is configured, you can start working with object storage:\n\nS3 Operations - Create buckets, upload files, and manage access"
   },
   {
     "objectID": "tutorial/s3-operations.html",
     "href": "tutorial/s3-operations.html",
-    "title": "S3 Operations",
+    "title": "03. S3 Operations",
     "section": "",
-    "text": "Buckets contain files. Bucket names must be unique across the Arbutus object storage solution.\nValid bucket names may only use: - Upper case characters (A-Z) - Lower case characters (a-z) - Digits (0-9) - Period (.) - Hyphen (-)\n\n\nTo view all buckets, use the ls command:\ns3cmd ls\n\n\n\nTo create a bucket, use the tool’s mb (make bucket) command:\ns3cmd mb s3://BUCKET_NAME/\n\n\n\nTo see the status of a bucket, use the info command:\ns3cmd info s3://BUCKET_NAME/\nThe output will look something like this:\ns3://BUCKET_NAME/ (bucket):\n   Location:  default\n   Payer:     BucketOwner\n   Expiration Rule: none\n   Policy:    none\n   CORS:      none\n   ACL:       *anon*: READ\n   ACL:       USER: FULL_CONTROL\n   URL:       http://object-arbutus.cloud.computecanada.ca/BUCKET_NAME/",
-    "crumbs": [
-      "Home",
-      "S3 Operations"
-    ]
+    "text": "Buckets contain files. Bucket names must be unique across the Arbutus object storage solution.\nValid bucket names may only use: - Upper case characters (A-Z) - Lower case characters (a-z) - Digits (0-9) - Period (.) - Hyphen (-)\n\n\nTo view all buckets, use the ls command:\ns3cmd ls\n\n\n\nTo create a bucket, use the tool’s mb (make bucket) command:\ns3cmd mb s3://BUCKET_NAME/\n\n\n\nTo see the status of a bucket, use the info command:\ns3cmd info s3://BUCKET_NAME/\nThe output will look something like this:\ns3://BUCKET_NAME/ (bucket):\n   Location:  default\n   Payer:     BucketOwner\n   Expiration Rule: none\n   Policy:    none\n   CORS:      none\n   ACL:       *anon*: READ\n   ACL:       USER: FULL_CONTROL\n   URL:       http://object-arbutus.cloud.computecanada.ca/BUCKET_NAME/"
   },
   {
     "objectID": "tutorial/s3-operations.html#create-buckets",
     "href": "tutorial/s3-operations.html#create-buckets",
-    "title": "S3 Operations",
+    "title": "03. S3 Operations",
     "section": "",
-    "text": "Buckets contain files. Bucket names must be unique across the Arbutus object storage solution.\nValid bucket names may only use: - Upper case characters (A-Z) - Lower case characters (a-z) - Digits (0-9) - Period (.) - Hyphen (-)\n\n\nTo view all buckets, use the ls command:\ns3cmd ls\n\n\n\nTo create a bucket, use the tool’s mb (make bucket) command:\ns3cmd mb s3://BUCKET_NAME/\n\n\n\nTo see the status of a bucket, use the info command:\ns3cmd info s3://BUCKET_NAME/\nThe output will look something like this:\ns3://BUCKET_NAME/ (bucket):\n   Location:  default\n   Payer:     BucketOwner\n   Expiration Rule: none\n   Policy:    none\n   CORS:      none\n   ACL:       *anon*: READ\n   ACL:       USER: FULL_CONTROL\n   URL:       http://object-arbutus.cloud.computecanada.ca/BUCKET_NAME/",
-    "crumbs": [
-      "Home",
-      "S3 Operations"
-    ]
+    "text": "Buckets contain files. Bucket names must be unique across the Arbutus object storage solution.\nValid bucket names may only use: - Upper case characters (A-Z) - Lower case characters (a-z) - Digits (0-9) - Period (.) - Hyphen (-)\n\n\nTo view all buckets, use the ls command:\ns3cmd ls\n\n\n\nTo create a bucket, use the tool’s mb (make bucket) command:\ns3cmd mb s3://BUCKET_NAME/\n\n\n\nTo see the status of a bucket, use the info command:\ns3cmd info s3://BUCKET_NAME/\nThe output will look something like this:\ns3://BUCKET_NAME/ (bucket):\n   Location:  default\n   Payer:     BucketOwner\n   Expiration Rule: none\n   Policy:    none\n   CORS:      none\n   ACL:       *anon*: READ\n   ACL:       USER: FULL_CONTROL\n   URL:       http://object-arbutus.cloud.computecanada.ca/BUCKET_NAME/"
   },
   {
     "objectID": "tutorial/s3-operations.html#upload-files",
     "href": "tutorial/s3-operations.html#upload-files",
-    "title": "S3 Operations",
+    "title": "03. S3 Operations",
     "section": "Upload Files",
-    "text": "Upload Files\nTo upload a file to the bucket, use the put command:\ns3cmd put --guess-mime-type FILE_NAME.dat s3://BUCKET_NAME/FILE_NAME.dat\nwhere the bucket name and the file name are specified.",
-    "crumbs": [
-      "Home",
-      "S3 Operations"
-    ]
+    "text": "Upload Files\nTo upload a file to the bucket, use the put command:\ns3cmd put --guess-mime-type FILE_NAME.dat s3://BUCKET_NAME/FILE_NAME.dat\nwhere the bucket name and the file name are specified."
   },
   {
     "objectID": "tutorial/s3-operations.html#delete-files",
     "href": "tutorial/s3-operations.html#delete-files",
-    "title": "S3 Operations",
+    "title": "03. S3 Operations",
     "section": "Delete Files",
-    "text": "Delete Files\nTo delete a file from the bucket, use the rm command:\ns3cmd rm s3://BUCKET_NAME/FILE_NAME.dat",
-    "crumbs": [
-      "Home",
-      "S3 Operations"
-    ]
+    "text": "Delete Files\nTo delete a file from the bucket, use the rm command:\ns3cmd rm s3://BUCKET_NAME/FILE_NAME.dat"
   },
   {
     "objectID": "tutorial/s3-operations.html#access-control-lists-acls-and-policies",
     "href": "tutorial/s3-operations.html#access-control-lists-acls-and-policies",
-    "title": "S3 Operations",
+    "title": "03. S3 Operations",
     "section": "Access Control Lists (ACLs) and Policies",
-    "text": "Access Control Lists (ACLs) and Policies\nBuckets can have ACLs and policies which govern who can access what resources in the object store. These features are quite sophisticated. Here are two simple examples of using ACLs using the tool’s setacl command.\n\nMake Bucket Public\nThe result of this command is that the public can access the bucket and recursively (-r) every file in the bucket:\ns3cmd setacl --acl-public -r s3://BUCKET_NAME/\nFiles can be accessed via URLs such as:\nhttps://object-arbutus.cloud.computecanada.ca/BUCKET_NAME/FILE_NAME.dat\n\n\nMake Bucket Private\nThe second ACL example limits access to the bucket to only the owner:\ns3cmd setacl --acl-private s3://BUCKET_NAME/\n\n\nView Bucket Configuration\nThe current configuration of a bucket can be viewed via the command:\ns3cmd info s3://BUCKET_NAME/",
-    "crumbs": [
-      "Home",
-      "S3 Operations"
-    ]
+    "text": "Access Control Lists (ACLs) and Policies\nBuckets can have ACLs and policies which govern who can access what resources in the object store. These features are quite sophisticated. Here are two simple examples of using ACLs using the tool’s setacl command.\n\nMake Bucket Public\nThe result of this command is that the public can access the bucket and recursively (-r) every file in the bucket:\ns3cmd setacl --acl-public -r s3://BUCKET_NAME/\nFiles can be accessed via URLs such as:\nhttps://object-arbutus.cloud.computecanada.ca/BUCKET_NAME/FILE_NAME.dat\n\n\nMake Bucket Private\nThe second ACL example limits access to the bucket to only the owner:\ns3cmd setacl --acl-private s3://BUCKET_NAME/\n\n\nView Bucket Configuration\nThe current configuration of a bucket can be viewed via the command:\ns3cmd info s3://BUCKET_NAME/"
   },
   {
     "objectID": "tutorial/s3-operations.html#acknowledgments",
     "href": "tutorial/s3-operations.html#acknowledgments",
-    "title": "S3 Operations",
+    "title": "03. S3 Operations",
     "section": "Acknowledgments",
-    "text": "Acknowledgments\nThis tutorial is based on the s3cmd setup guide.",
-    "crumbs": [
-      "Home",
-      "S3 Operations"
-    ]
+    "text": "Acknowledgments\nThis tutorial is based on the s3cmd setup guide."
   },
   {
     "objectID": "tutorial/s3-operations.html#additional-resources",
     "href": "tutorial/s3-operations.html#additional-resources",
-    "title": "S3 Operations",
+    "title": "03. S3 Operations",
     "section": "Additional Resources",
-    "text": "Additional Resources\n\nCommand Cheatsheet - Quick reference for all commands",
-    "crumbs": [
-      "Home",
-      "S3 Operations"
-    ]
+    "text": "Additional Resources\n\nCommand Cheatsheet - Quick reference for all commands"
   }
 ]

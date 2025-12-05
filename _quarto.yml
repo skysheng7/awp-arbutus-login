@@ -20,12 +20,12 @@ website:
         text: Command Cheatsheet
   sidebar:
     contents:
-      - index.qmd
-      - tutorial/getting-started.qmd
-      - tutorial/arbutus-auth.qmd
-      - tutorial/s3-setup.qmd
-      - tutorial/s3-operations.qmd
-      - tutorial/cheatsheet.qmd
+      - index.html
+      - tutorial/getting-started.html
+      - tutorial/arbutus-auth.html
+      - tutorial/s3-setup.html
+      - tutorial/s3-operations.html
+      - tutorial/cheatsheet.html
 
 format:
   html:
