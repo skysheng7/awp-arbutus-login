@@ -6,17 +6,17 @@ website:
   title: "Arbutus Cloud Computing Guide"
   navbar:
     left:
-      - href: docs/index.html
+      - href: tutorial/index.html
         text: Home
-      - href: docs/getting-started.html
-        text: Getting Started
-      - href: docs/arbutus-auth.html
-        text: Arbutus Authentication
-      - href: docs/s3-setup.html
-        text: S3 Storage Setup
-      - href: docs/s3-operations.html
-        text: S3 Operations
-      - href: docs/cheatsheet.html
+      - href: tutorial/getting-started.html
+        text: 00. Getting Started
+      - href: tutorial/arbutus-auth.html
+        text: 01. Arbutus Authentication
+      - href: tutorial/s3-setup.html
+        text: 02. S3 Storage Setup
+      - href: tutorial/s3-operations.html
+        text: 03. S3 Operations
+      - href: tutorial/cheatsheet.html
         text: Command Cheatsheet
 
 format:

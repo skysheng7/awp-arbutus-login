@@ -55,6 +55,7 @@ HTTP Proxy server name:
 ```
 
 **Important prompts:**
+
 * You will be prompted for "Test access with supplied credentials?" → Answer **"y"**
 * You will be prompted for "Save settings? [y/N]" → Answer **"y"**
 
