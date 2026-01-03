@@ -74,12 +74,13 @@ def generate_video_csv(output_dir: str = "./data", filename: str = "arbutus_vide
             # Generate the HTTP URL
             url = f"http://object-arbutus.cloud.computecanada.ca/{path_without_s3}"
             
-            all_videos.append({
-                'bucket': bucket_name,
-                'filename': filename_s3,
-                'size_bytes': size,
-                'url': url
-            })
+            if url.lower().endswith('.mp4'):
+                all_videos.append({
+                    'bucket': bucket_name,
+                    'filename': filename_s3,
+                    'size_bytes': size,
+                    'url': url
+                })
     
     if not all_videos:
         print("No videos found. Please check your s3cmd configuration and bucket access.")
