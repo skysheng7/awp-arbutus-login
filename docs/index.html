@@ -182,7 +182,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul>
   <li><a href="#welcome" id="toc-welcome" class="nav-link active" data-scroll-target="#welcome">Welcome</a></li>
   <li><a href="#author" id="toc-author" class="nav-link" data-scroll-target="#author">Author</a></li>
-  <li><a href="#quick-cheatsheet-for-returning-users" id="toc-quick-cheatsheet-for-returning-users" class="nav-link" data-scroll-target="#quick-cheatsheet-for-returning-users">Quick Cheatsheet (For Returning Users)</a></li>
+  <li><a href="#quick-cheatsheet-for-returning-users" id="toc-quick-cheatsheet-for-returning-users" class="nav-link" data-scroll-target="#quick-cheatsheet-for-returning-users">Quick Cheatsheet (For Returning Users)</a>
+  <ul class="collapse">
+  <li><a href="#access-videos-through-url" id="toc-access-videos-through-url" class="nav-link" data-scroll-target="#access-videos-through-url">Access Videos Through URL</a></li>
+  </ul></li>
   <li><a href="#full-tutorials" id="toc-full-tutorials" class="nav-link" data-scroll-target="#full-tutorials">Full Tutorials</a></li>
   <li><a href="#what-is-arbutus" id="toc-what-is-arbutus" class="nav-link" data-scroll-target="#what-is-arbutus">What is Arbutus?</a></li>
   <li><a href="#additional-resources" id="toc-additional-resources" class="nav-link" data-scroll-target="#additional-resources">Additional Resources</a></li>
@@ -244,7 +247,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Test S3 connection (if already configured)</span></span>
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="ex">s3cmd</span> ls</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="access-videos-through-url" class="level3">
+<h3 class="anchored" data-anchor-id="access-videos-through-url">Access Videos Through URL</h3>
+<p>Once you make your bucket public, you can access videos and files directly through URLs in this format:</p>
+<pre><code>http://object-arbutus.cloud.computecanada.ca/BUCKET_NAME/FILE_NAME</code></pre>
+<p><strong>Note:</strong> The bucket must be made public first using:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">s3cmd</span> setacl <span class="at">--acl-public</span> <span class="at">-r</span> s3://BUCKET_NAME/</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <hr>
+</section>
 </section>
 <section id="full-tutorials" class="level2">
 <h2 class="anchored" data-anchor-id="full-tutorials">Full Tutorials</h2>

@@ -87,6 +87,8 @@ Files can be accessed via URLs such as:
 https://object-arbutus.cloud.computecanada.ca/BUCKET_NAME/FILE_NAME.dat
 ```
 
+**For videos and media files:** Once your bucket is public, you can directly access and stream videos through these URLs in web browsers or media players.
+
 ### Make Bucket Private
 
 The second ACL example limits access to the bucket to only the owner:

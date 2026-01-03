@@ -33,6 +33,21 @@ source def-ubcawp-dev-openrc.sh
 s3cmd ls
 ```
 
+### Access Videos Through URL
+
+Once you make your bucket public, you can access videos and files directly through URLs in this format:
+
+```
+http://object-arbutus.cloud.computecanada.ca/BUCKET_NAME/FILE_NAME
+```
+
+**Note:** The bucket must be made public first using:
+
+```bash
+s3cmd setacl --acl-public -r s3://BUCKET_NAME/
+```
+
+
 ---
 
 ## Full Tutorials
