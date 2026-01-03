@@ -1,171 +1,66 @@
 [
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Arbutus Cloud Computing Guide",
+    "objectID": "scripts/README_UBC_VIDEOS.html",
+    "href": "scripts/README_UBC_VIDEOS.html",
+    "title": "UBC Farm 2022 Video Processing Scripts",
     "section": "",
-    "text": "This guide provides comprehensive instructions for working with Arbutus, Compute Canada’s OpenStack cloud platform, and managing object storage with S3."
+    "text": "This directory contains scripts to process and upload UBC Farm 2022 videos to S3 storage.\n\n\nThe workflow consists of two main steps:\n\nLabel videos - Scan the video directory and match videos with their labels from the CSV\nGenerate S3 upload commands - Create a bash script to upload videos to the appropriate S3 buckets\n\n\n\n\n\nPython 3.x with pandas installed: pip install pandas\ns3cmd configured with your credentials\nAccess to the video directory: /Users/skysheng/Library/CloudStorage/OneDrive-UBC/PhD Project/Amazon_project_phase_3/videos/ubc_farm_2022/short_videos_by_cow\n\n\n\n\nRun the first script to scan all MP4 videos and create a labeled CSV:\npython scripts/01-label-ubc-videos.py\nWhat it does: - Scans the video directory recursively for all .mp4 files - Matches each video filename with the labels in data/videos_labels_ubc.csv - Determines if each video is “good” (all label columns are 0) or “bad” (at least one label column is 1) - Creates a new CSV file: data/ubc_videos_labeled_with_paths.csv\nOutput CSV columns: - file_path - Full absolute path to the video file - file_name - Video filename - toward_or_away, right_to_left, human, run, slip, stop, multi_cow - Label columns - label - Either “good” or “bad”\nLabel criteria: - Bad video: Any of the label columns (toward_or_away, right_to_left, human, run, slip, stop, multi_cow) equals 1 - Good video: All label columns equal 0\n\n\n\nRun the second script to generate the upload commands:\npython scripts/02-generate-s3-upload-commands.py\nWhat it does: - Reads the labeled CSV from Step 1 - Generates a bash script with s3cmd commands to upload each video - Good videos → s3://ubc_farm_2022/good/ - Bad videos → s3://ubc_farm_2022/bad/ - Creates a summary file with upload statistics\nOutputs: - scripts/upload_ubc_videos_to_s3.sh - Executable bash script with upload commands - scripts/upload_ubc_videos_to_s3_summary.txt - Summary of what will be uploaded\n\n\n\nIMPORTANT: Review the generated script before executing!\n# Review the script\ncat scripts/upload_ubc_videos_to_s3.sh\n\n# Review the summary\ncat scripts/upload_ubc_videos_to_s3_summary.txt\n\n# When ready, execute the upload\nbash scripts/upload_ubc_videos_to_s3.sh\n\n\n\nawp-arbutus-login/\n├── data/\n│   ├── videos_labels_ubc.csv                    # Original labels (input)\n│   └── ubc_videos_labeled_with_paths.csv        # Generated with file paths (output)\n├── scripts/\n│   ├── 01-label-ubc-videos.py                   # Step 1: Label videos\n│   ├── 02-generate-s3-upload-commands.py        # Step 2: Generate upload script\n│   ├── upload_ubc_videos_to_s3.sh               # Generated upload script\n│   └── upload_ubc_videos_to_s3_summary.txt      # Generated summary\n\n\n\n\nThe scripts handle filenames with spaces and special characters\nVideos not found in the labels CSV will be reported but skipped\nThe upload script uses s3cmd put with --guess-mime-type for proper content type\nThe upload script includes set -e to stop on errors\nEach upload command includes an echo statement for progress tracking\n\n\n\n\nProblem: “Video directory not found” - Check that the OneDrive path is correctly synced and accessible\nProblem: “Labels CSV not found” - Ensure you’re running the script from the repository root directory\nProblem: “No videos matched with labels” - Check that the video filenames in the directory match exactly with the file_name column in the CSV - Filenames are case-sensitive\nProblem: s3cmd errors - Verify s3cmd is installed: s3cmd --version - Check your s3cmd configuration: s3cmd --configure - Test connection: s3cmd ls s3://ubc_farm_2022/"
   },
   {
-    "objectID": "index.html#welcome",
-    "href": "index.html#welcome",
-    "title": "Arbutus Cloud Computing Guide",
+    "objectID": "scripts/README_UBC_VIDEOS.html#overview",
+    "href": "scripts/README_UBC_VIDEOS.html#overview",
+    "title": "UBC Farm 2022 Video Processing Scripts",
     "section": "",
-    "text": "This guide provides comprehensive instructions for working with Arbutus, Compute Canada’s OpenStack cloud platform, and managing object storage with S3."
+    "text": "The workflow consists of two main steps:\n\nLabel videos - Scan the video directory and match videos with their labels from the CSV\nGenerate S3 upload commands - Create a bash script to upload videos to the appropriate S3 buckets"
   },
   {
-    "objectID": "index.html#author",
-    "href": "index.html#author",
-    "title": "Arbutus Cloud Computing Guide",
-    "section": "Author",
-    "text": "Author\nSky (Kehan) Sheng\n\nUniversity of British Columbia Animal Welfare Program\nskysheng.io"
-  },
-  {
-    "objectID": "index.html#quick-start",
-    "href": "index.html#quick-start",
-    "title": "Arbutus Cloud Computing Guide",
-    "section": "Quick Start",
-    "text": "Quick Start\n\nGetting Started - Prerequisites and installation\nArbutus Authentication - Setting up OpenStack authentication\nS3 Storage Setup - Configuring s3cmd for object storage\nS3 Operations - Working with buckets and files\nCommand Cheatsheet - Quick reference for common commands"
-  },
-  {
-    "objectID": "index.html#what-is-arbutus",
-    "href": "index.html#what-is-arbutus",
-    "title": "Arbutus Cloud Computing Guide",
-    "section": "What is Arbutus?",
-    "text": "What is Arbutus?\nArbutus is Compute Canada’s OpenStack cloud platform that provides:\n\nVirtual machines and compute resources\nObject storage (S3-compatible)\nNetworking and security groups\nImage management"
-  },
-  {
-    "objectID": "index.html#additional-resources",
-    "href": "index.html#additional-resources",
-    "title": "Arbutus Cloud Computing Guide",
-    "section": "Additional Resources",
-    "text": "Additional Resources\n\nOpenStack CLI Guide\nDigital Research Alliance of Canada Documentation\nOpenStack Client Documentation\ns3cmd setup"
-  },
-  {
-    "objectID": "tutorial/cheatsheet.html",
-    "href": "tutorial/cheatsheet.html",
-    "title": "04. Command Cheatsheet",
+    "objectID": "scripts/README_UBC_VIDEOS.html#prerequisites",
+    "href": "scripts/README_UBC_VIDEOS.html#prerequisites",
+    "title": "UBC Farm 2022 Video Processing Scripts",
     "section": "",
-    "text": "# Source OpenStack credentials\nsource def-ubcawp-dev-openrc.sh\n\n# Verify authentication\nopenstack image list\n\n\n\n# Create EC2 credentials for S3 access\nopenstack ec2 credentials create\n\n# List EC2 credentials\nopenstack ec2 credentials list\n\n# Delete EC2 credentials\nopenstack ec2 credentials delete &lt;credential-id&gt;"
+    "text": "Python 3.x with pandas installed: pip install pandas\ns3cmd configured with your credentials\nAccess to the video directory: /Users/skysheng/Library/CloudStorage/OneDrive-UBC/PhD Project/Amazon_project_phase_3/videos/ubc_farm_2022/short_videos_by_cow"
   },
   {
-    "objectID": "tutorial/cheatsheet.html#openstack-commands",
-    "href": "tutorial/cheatsheet.html#openstack-commands",
-    "title": "04. Command Cheatsheet",
+    "objectID": "scripts/README_UBC_VIDEOS.html#step-1-label-videos",
+    "href": "scripts/README_UBC_VIDEOS.html#step-1-label-videos",
+    "title": "UBC Farm 2022 Video Processing Scripts",
     "section": "",
-    "text": "# Source OpenStack credentials\nsource def-ubcawp-dev-openrc.sh\n\n# Verify authentication\nopenstack image list\n\n\n\n# Create EC2 credentials for S3 access\nopenstack ec2 credentials create\n\n# List EC2 credentials\nopenstack ec2 credentials list\n\n# Delete EC2 credentials\nopenstack ec2 credentials delete &lt;credential-id&gt;"
+    "text": "Run the first script to scan all MP4 videos and create a labeled CSV:\npython scripts/01-label-ubc-videos.py\nWhat it does: - Scans the video directory recursively for all .mp4 files - Matches each video filename with the labels in data/videos_labels_ubc.csv - Determines if each video is “good” (all label columns are 0) or “bad” (at least one label column is 1) - Creates a new CSV file: data/ubc_videos_labeled_with_paths.csv\nOutput CSV columns: - file_path - Full absolute path to the video file - file_name - Video filename - toward_or_away, right_to_left, human, run, slip, stop, multi_cow - Label columns - label - Either “good” or “bad”\nLabel criteria: - Bad video: Any of the label columns (toward_or_away, right_to_left, human, run, slip, stop, multi_cow) equals 1 - Good video: All label columns equal 0"
   },
   {
-    "objectID": "tutorial/cheatsheet.html#s3-commands-s3cmd",
-    "href": "tutorial/cheatsheet.html#s3-commands-s3cmd",
-    "title": "04. Command Cheatsheet",
-    "section": "S3 Commands (s3cmd)",
-    "text": "S3 Commands (s3cmd)\n\nConfiguration\n# Configure s3cmd\ns3cmd --configure\n\n# Test configuration\ns3cmd ls\n\n\nBucket Operations\n# Create a bucket\ns3cmd mb s3://BUCKET_NAME/\n\n# List all buckets\ns3cmd ls\n\n# List contents of a bucket\ns3cmd ls s3://BUCKET_NAME/\n\n# Get bucket information\ns3cmd info s3://BUCKET_NAME/\n\n# Delete an empty bucket\ns3cmd rb s3://BUCKET_NAME/\n\n# Delete a bucket and all its contents\ns3cmd rb --recursive s3://BUCKET_NAME/\n\n\nFile Operations\n# Upload a file\ns3cmd put --guess-mime-type FILE_NAME.dat s3://BUCKET_NAME/FILE_NAME.dat\n\n# Upload a file with custom path\ns3cmd put --guess-mime-type local_file.txt s3://BUCKET_NAME/path/to/remote_file.txt\n\n# Upload a directory recursively\ns3cmd put --recursive --guess-mime-type local_dir/ s3://BUCKET_NAME/\n\n# Download a file\ns3cmd get s3://BUCKET_NAME/FILE_NAME.dat local_file.dat\n\n# Download a directory recursively\ns3cmd get --recursive s3://BUCKET_NAME/remote_dir/ local_dir/\n\n# Delete a file\ns3cmd rm s3://BUCKET_NAME/FILE_NAME.dat\n\n# Delete multiple files (pattern matching)\ns3cmd del s3://BUCKET_NAME/*.tmp\n\n# Delete directory recursively\ns3cmd del --recursive s3://BUCKET_NAME/path/to/dir/\n\n\nAccess Control\n# Make bucket public (recursive)\ns3cmd setacl --acl-public -r s3://BUCKET_NAME/\n\n# Make bucket private\ns3cmd setacl --acl-private s3://BUCKET_NAME/\n\n# Set ACL for specific file\ns3cmd setacl --acl-public s3://BUCKET_NAME/FILE_NAME.dat\n\n# Get ACL information\ns3cmd info s3://BUCKET_NAME/\n\n\nSynchronization\n# Sync local directory to bucket\ns3cmd sync local_dir/ s3://BUCKET_NAME/remote_dir/\n\n# Sync bucket to local directory\ns3cmd sync s3://BUCKET_NAME/remote_dir/ local_dir/\n\n# Sync with exclusions\ns3cmd sync --exclude '*.tmp' --exclude '*.log' local_dir/ s3://BUCKET_NAME/\n\n\nUseful Options\n# Dry run (see what would happen without executing)\ns3cmd --dry-run put file.txt s3://BUCKET_NAME/\n\n# Verbose output\ns3cmd -v put file.txt s3://BUCKET_NAME/\n\n# Force operation (skip confirmation)\ns3cmd --force put file.txt s3://BUCKET_NAME/\n\n# Show progress\ns3cmd --progress put large_file.dat s3://BUCKET_NAME/"
-  },
-  {
-    "objectID": "tutorial/cheatsheet.html#quick-reference",
-    "href": "tutorial/cheatsheet.html#quick-reference",
-    "title": "04. Command Cheatsheet",
-    "section": "Quick Reference",
-    "text": "Quick Reference\n\n\n\n\n\n\n\nTask\nCommand\n\n\n\n\nCreate bucket\ns3cmd mb s3://BUCKET_NAME/\n\n\nList buckets\ns3cmd ls\n\n\nUpload file\ns3cmd put FILE s3://BUCKET_NAME/FILE\n\n\nDownload file\ns3cmd get s3://BUCKET_NAME/FILE LOCAL_FILE\n\n\nDelete file\ns3cmd rm s3://BUCKET_NAME/FILE\n\n\nMake public\ns3cmd setacl --acl-public -r s3://BUCKET_NAME/\n\n\nMake private\ns3cmd setacl --acl-private s3://BUCKET_NAME/\n\n\nSync directory\ns3cmd sync LOCAL_DIR/ s3://BUCKET_NAME/REMOTE_DIR/"
-  },
-  {
-    "objectID": "tutorial/getting-started.html",
-    "href": "tutorial/getting-started.html",
-    "title": "00. Getting Started",
+    "objectID": "scripts/README_UBC_VIDEOS.html#step-2-generate-s3-upload-script",
+    "href": "scripts/README_UBC_VIDEOS.html#step-2-generate-s3-upload-script",
+    "title": "UBC Farm 2022 Video Processing Scripts",
     "section": "",
-    "text": "Before you begin, ensure you have:\n\nAn account with Digital Research Alliance of Canada\nAn account with Arbutus\nThe ability to login to Arbutus\n\n\n\n\nTo recreate the computational environment, you will need ONE of the following:\nOption A: Docker (Recommended)\n\nDocker installed on your computer\nWorks on all operating systems (Windows, macOS, Linux)\n\nOption B: Conda\n\nMiniforge installed\nconda-lock installed (run conda install conda-lock if not installed)\nOnly available for: linux-64, osx-64, osx-arm64"
+    "text": "Run the second script to generate the upload commands:\npython scripts/02-generate-s3-upload-commands.py\nWhat it does: - Reads the labeled CSV from Step 1 - Generates a bash script with s3cmd commands to upload each video - Good videos → s3://ubc_farm_2022/good/ - Bad videos → s3://ubc_farm_2022/bad/ - Creates a summary file with upload statistics\nOutputs: - scripts/upload_ubc_videos_to_s3.sh - Executable bash script with upload commands - scripts/upload_ubc_videos_to_s3_summary.txt - Summary of what will be uploaded"
   },
   {
-    "objectID": "tutorial/getting-started.html#prerequisites",
-    "href": "tutorial/getting-started.html#prerequisites",
-    "title": "00. Getting Started",
+    "objectID": "scripts/README_UBC_VIDEOS.html#step-3-review-and-execute-upload",
+    "href": "scripts/README_UBC_VIDEOS.html#step-3-review-and-execute-upload",
+    "title": "UBC Farm 2022 Video Processing Scripts",
     "section": "",
-    "text": "Before you begin, ensure you have:\n\nAn account with Digital Research Alliance of Canada\nAn account with Arbutus\nThe ability to login to Arbutus\n\n\n\n\nTo recreate the computational environment, you will need ONE of the following:\nOption A: Docker (Recommended)\n\nDocker installed on your computer\nWorks on all operating systems (Windows, macOS, Linux)\n\nOption B: Conda\n\nMiniforge installed\nconda-lock installed (run conda install conda-lock if not installed)\nOnly available for: linux-64, osx-64, osx-arm64"
+    "text": "IMPORTANT: Review the generated script before executing!\n# Review the script\ncat scripts/upload_ubc_videos_to_s3.sh\n\n# Review the summary\ncat scripts/upload_ubc_videos_to_s3_summary.txt\n\n# When ready, execute the upload\nbash scripts/upload_ubc_videos_to_s3.sh"
   },
   {
-    "objectID": "tutorial/getting-started.html#installation",
-    "href": "tutorial/getting-started.html#installation",
-    "title": "00. Getting Started",
-    "section": "Installation",
-    "text": "Installation\n\nStep 1: Clone the Repository\ngit clone https://github.com/skysheng7/awp-arbutus-login.git\ncd awp-arbutus-login\n\n\nStep 2: Set Up Your Environment\nChoose the method that matches your prerequisites:\n\n\n\n\n\n\nNoteOption 1: Using Docker (Recommended)\n\n\n\n\n\nAdvantages: Works on all operating systems, consistent environment across platforms\n\nStart the Docker container:\n\ndocker compose run --rm arbutus_python\nOr use the Make shortcut:\nmake docker\n\nYou will enter a bash shell inside the container. Your prompt will look like:\n(arbutus) root@e5d14c9ca3cc:/#\nWhen finished, exit the container:\n\nType exit + press Enter to leave the bash shell\nRun docker compose rm to remove the container\n\n\n\n\n\n\n\n\n\n\n\nNoteOption 2: Using conda-lock\n\n\n\n\n\nPlatforms: linux-64, osx-64, osx-arm64 only\nAdvantages: Reproducible environment with locked dependencies\nconda-lock install -n arbutus conda-lock.yml\nconda activate arbutus\n\n\n\n\n\n\n\n\n\nNoteOption 3: Using environment.yml\n\n\n\n\n\nPlatforms: linux-64, osx-64, osx-arm64 only\nAdvantages: Simpler setup\nconda env create -f environment.yml\nconda activate arbutus"
-  },
-  {
-    "objectID": "tutorial/getting-started.html#next-steps",
-    "href": "tutorial/getting-started.html#next-steps",
-    "title": "00. Getting Started",
-    "section": "Next Steps",
-    "text": "Next Steps\nOnce your environment is set up, proceed to:\n\nArbutus Authentication - Set up OpenStack authentication"
-  },
-  {
-    "objectID": "tutorial/arbutus-auth.html",
-    "href": "tutorial/arbutus-auth.html",
-    "title": "01. Arbutus Authentication",
+    "objectID": "scripts/README_UBC_VIDEOS.html#file-structure",
+    "href": "scripts/README_UBC_VIDEOS.html#file-structure",
+    "title": "UBC Farm 2022 Video Processing Scripts",
     "section": "",
-    "text": "Login to Arbutus\nClick on “API Access” on the left panel\nClick on “Download OpenStack RC File”\nClick on “OpenStack RC File” in the dropdown menu"
+    "text": "awp-arbutus-login/\n├── data/\n│   ├── videos_labels_ubc.csv                    # Original labels (input)\n│   └── ubc_videos_labeled_with_paths.csv        # Generated with file paths (output)\n├── scripts/\n│   ├── 01-label-ubc-videos.py                   # Step 1: Label videos\n│   ├── 02-generate-s3-upload-commands.py        # Step 2: Generate upload script\n│   ├── upload_ubc_videos_to_s3.sh               # Generated upload script\n│   └── upload_ubc_videos_to_s3_summary.txt      # Generated summary"
   },
   {
-    "objectID": "tutorial/arbutus-auth.html#download-openstack-rc-file",
-    "href": "tutorial/arbutus-auth.html#download-openstack-rc-file",
-    "title": "01. Arbutus Authentication",
+    "objectID": "scripts/README_UBC_VIDEOS.html#notes",
+    "href": "scripts/README_UBC_VIDEOS.html#notes",
+    "title": "UBC Farm 2022 Video Processing Scripts",
     "section": "",
-    "text": "Login to Arbutus\nClick on “API Access” on the left panel\nClick on “Download OpenStack RC File”\nClick on “OpenStack RC File” in the dropdown menu"
+    "text": "The scripts handle filenames with spaces and special characters\nVideos not found in the labels CSV will be reported but skipped\nThe upload script uses s3cmd put with --guess-mime-type for proper content type\nThe upload script includes set -e to stop on errors\nEach upload command includes an echo statement for progress tracking"
   },
   {
-    "objectID": "tutorial/arbutus-auth.html#configure-credentials",
-    "href": "tutorial/arbutus-auth.html#configure-credentials",
-    "title": "01. Arbutus Authentication",
-    "section": "Configure Credentials",
-    "text": "Configure Credentials\n\nRename the downloaded file to def-ubcawp-dev-openrc.sh and place it in the repository root directory.\n\n⚠️ Security Warning: DO NOT share your OpenStack RC File with anyone. Never push this to GitHub. This file is already included in .gitignore to prevent accidental commits.\n\nSource the OpenStack credentials script from your terminal:\n\nsource def-ubcawp-dev-openrc.sh\nYou will be prompted to enter your OpenStack password. Enter your password when prompted."
-  },
-  {
-    "objectID": "tutorial/arbutus-auth.html#verification",
-    "href": "tutorial/arbutus-auth.html#verification",
-    "title": "01. Arbutus Authentication",
-    "section": "Verification",
-    "text": "Verification\nVerify that you’re authenticated by running the following command:\nList available Docker images:\nopenstack image list\nIf this command executes successfully, you are authenticated and ready to use OpenStack commands."
-  },
-  {
-    "objectID": "tutorial/arbutus-auth.html#next-steps",
-    "href": "tutorial/arbutus-auth.html#next-steps",
-    "title": "01. Arbutus Authentication",
-    "section": "Next Steps",
-    "text": "Next Steps\n\nS3 Storage Setup - Configure object storage access"
-  },
-  {
-    "objectID": "tutorial/s3-setup.html",
-    "href": "tutorial/s3-setup.html",
-    "title": "02. S3 Storage Setup",
+    "objectID": "scripts/README_UBC_VIDEOS.html#troubleshooting",
+    "href": "scripts/README_UBC_VIDEOS.html#troubleshooting",
+    "title": "UBC Farm 2022 Video Processing Scripts",
     "section": "",
-    "text": "In order to manage your Arbutus Object Store, you need your own storage access ID & secret key. In terminal, create credentials using:\nopenstack ec2 credentials create\nThis will output your Access Key and Secret Key. Save these credentials securely - you’ll need them for the next step."
-  },
-  {
-    "objectID": "tutorial/s3-setup.html#create-ec2-credentials",
-    "href": "tutorial/s3-setup.html#create-ec2-credentials",
-    "title": "02. S3 Storage Setup",
-    "section": "",
-    "text": "In order to manage your Arbutus Object Store, you need your own storage access ID & secret key. In terminal, create credentials using:\nopenstack ec2 credentials create\nThis will output your Access Key and Secret Key. Save these credentials securely - you’ll need them for the next step."
-  },
-  {
-    "objectID": "tutorial/s3-setup.html#configure-s3cmd",
-    "href": "tutorial/s3-setup.html#configure-s3cmd",
-    "title": "02. S3 Storage Setup",
-    "section": "Configure s3cmd",
-    "text": "Configure s3cmd\nTo configure the s3cmd tool, use the command:\ns3cmd --configure\nThen make the following configurations using your credentials printed out in the terminal above:\nEnter new values or accept defaults in brackets with Enter.\nRefer to user manual for detailed description of all options.\n\nAccess key and Secret key are your identifiers for Amazon S3. Leave them empty for using the env variables.\nAccess Key []: 20_DIGIT_ACCESS_KEY\nSecret Key []: 40_DIGIT_SECRET_KEY\nDefault Region [US]:\n\nUse \"s3.amazonaws.com\" for S3 Endpoint and not modify it to the target Amazon S3.\nS3 Endpoint []: object-arbutus.cloud.computecanada.ca\n\nUse \"%(bucket)s.s3.amazonaws.com\" to the target Amazon S3. \"%(bucket)s\" and \"%(location)s\" vars can be used\nif the target S3 system supports dns based buckets.\nDNS-style bucket+hostname:port template for accessing a bucket []: object-arbutus.cloud.computecanada.ca\n\nEncryption password is used to protect your files from reading\nby unauthorized persons while in transfer to S3\nEncryption password []:\nPath to GPG program [/usr/bin/gpg]: \n\nWhen using secure HTTPS protocol all communication with Amazon S3\nservers is protected from 3rd party eavesdropping. This method is\nslower than plain HTTP, and can only be proxied with Python 2.7 or newer\nUse HTTPS protocol []: Yes\n\nOn some networks all internet access must go through a HTTP proxy.\nTry setting it here if you can't connect to S3 directly\nHTTP Proxy server name:\nImportant prompts:\n\nYou will be prompted for “Test access with supplied credentials?” → Answer “y”\nYou will be prompted for “Save settings? [y/N]” → Answer “y”"
-  },
-  {
-    "objectID": "tutorial/s3-setup.html#acknowledgments",
-    "href": "tutorial/s3-setup.html#acknowledgments",
-    "title": "02. S3 Storage Setup",
-    "section": "Acknowledgments",
-    "text": "Acknowledgments\nThis tutorial is based on the s3cmd setup guide."
-  },
-  {
-    "objectID": "tutorial/s3-setup.html#next-steps",
-    "href": "tutorial/s3-setup.html#next-steps",
-    "title": "02. S3 Storage Setup",
-    "section": "Next Steps",
-    "text": "Next Steps\nOnce s3cmd is configured, you can start working with object storage:\n\nS3 Operations - Create buckets, upload files, and manage access"
+    "text": "Problem: “Video directory not found” - Check that the OneDrive path is correctly synced and accessible\nProblem: “Labels CSV not found” - Ensure you’re running the script from the repository root directory\nProblem: “No videos matched with labels” - Check that the video filenames in the directory match exactly with the file_name column in the CSV - Filenames are case-sensitive\nProblem: s3cmd errors - Verify s3cmd is installed: s3cmd --version - Check your s3cmd configuration: s3cmd --configure - Test connection: s3cmd ls s3://ubc_farm_2022/"
   },
   {
     "objectID": "tutorial/s3-operations.html",
@@ -215,5 +110,180 @@
     "title": "03. S3 Operations",
     "section": "Additional Resources",
     "text": "Additional Resources\n\nCommand Cheatsheet - Quick reference for all commands"
+  },
+  {
+    "objectID": "tutorial/s3-setup.html",
+    "href": "tutorial/s3-setup.html",
+    "title": "02. S3 Storage Setup",
+    "section": "",
+    "text": "In order to manage your Arbutus Object Store, you need your own storage access ID & secret key. In terminal, create credentials using:\nopenstack ec2 credentials create\nThis will output your Access Key and Secret Key. Save these credentials securely - you’ll need them for the next step."
+  },
+  {
+    "objectID": "tutorial/s3-setup.html#create-ec2-credentials",
+    "href": "tutorial/s3-setup.html#create-ec2-credentials",
+    "title": "02. S3 Storage Setup",
+    "section": "",
+    "text": "In order to manage your Arbutus Object Store, you need your own storage access ID & secret key. In terminal, create credentials using:\nopenstack ec2 credentials create\nThis will output your Access Key and Secret Key. Save these credentials securely - you’ll need them for the next step."
+  },
+  {
+    "objectID": "tutorial/s3-setup.html#configure-s3cmd",
+    "href": "tutorial/s3-setup.html#configure-s3cmd",
+    "title": "02. S3 Storage Setup",
+    "section": "Configure s3cmd",
+    "text": "Configure s3cmd\nTo configure the s3cmd tool, use the command:\ns3cmd --configure\nThen make the following configurations using your credentials printed out in the terminal above:\nEnter new values or accept defaults in brackets with Enter.\nRefer to user manual for detailed description of all options.\n\nAccess key and Secret key are your identifiers for Amazon S3. Leave them empty for using the env variables.\nAccess Key []: 20_DIGIT_ACCESS_KEY\nSecret Key []: 40_DIGIT_SECRET_KEY\nDefault Region [US]:\n\nUse \"s3.amazonaws.com\" for S3 Endpoint and not modify it to the target Amazon S3.\nS3 Endpoint []: object-arbutus.cloud.computecanada.ca\n\nUse \"%(bucket)s.s3.amazonaws.com\" to the target Amazon S3. \"%(bucket)s\" and \"%(location)s\" vars can be used\nif the target S3 system supports dns based buckets.\nDNS-style bucket+hostname:port template for accessing a bucket []: object-arbutus.cloud.computecanada.ca\n\nEncryption password is used to protect your files from reading\nby unauthorized persons while in transfer to S3\nEncryption password []:\nPath to GPG program [/usr/bin/gpg]: \n\nWhen using secure HTTPS protocol all communication with Amazon S3\nservers is protected from 3rd party eavesdropping. This method is\nslower than plain HTTP, and can only be proxied with Python 2.7 or newer\nUse HTTPS protocol []: Yes\n\nOn some networks all internet access must go through a HTTP proxy.\nTry setting it here if you can't connect to S3 directly\nHTTP Proxy server name:\nImportant prompts:\n\nYou will be prompted for “Test access with supplied credentials?” → Answer “y”\nYou will be prompted for “Save settings? [y/N]” → Answer “y”"
+  },
+  {
+    "objectID": "tutorial/s3-setup.html#acknowledgments",
+    "href": "tutorial/s3-setup.html#acknowledgments",
+    "title": "02. S3 Storage Setup",
+    "section": "Acknowledgments",
+    "text": "Acknowledgments\nThis tutorial is based on the s3cmd setup guide."
+  },
+  {
+    "objectID": "tutorial/s3-setup.html#next-steps",
+    "href": "tutorial/s3-setup.html#next-steps",
+    "title": "02. S3 Storage Setup",
+    "section": "Next Steps",
+    "text": "Next Steps\nOnce s3cmd is configured, you can start working with object storage:\n\nS3 Operations - Create buckets, upload files, and manage access"
+  },
+  {
+    "objectID": "tutorial/arbutus-auth.html",
+    "href": "tutorial/arbutus-auth.html",
+    "title": "01. Arbutus Authentication",
+    "section": "",
+    "text": "Login to Arbutus\nClick on “API Access” on the left panel\nClick on “Download OpenStack RC File”\nClick on “OpenStack RC File” in the dropdown menu"
+  },
+  {
+    "objectID": "tutorial/arbutus-auth.html#download-openstack-rc-file",
+    "href": "tutorial/arbutus-auth.html#download-openstack-rc-file",
+    "title": "01. Arbutus Authentication",
+    "section": "",
+    "text": "Login to Arbutus\nClick on “API Access” on the left panel\nClick on “Download OpenStack RC File”\nClick on “OpenStack RC File” in the dropdown menu"
+  },
+  {
+    "objectID": "tutorial/arbutus-auth.html#configure-credentials",
+    "href": "tutorial/arbutus-auth.html#configure-credentials",
+    "title": "01. Arbutus Authentication",
+    "section": "Configure Credentials",
+    "text": "Configure Credentials\n\nRename the downloaded file to def-ubcawp-dev-openrc.sh and place it in the repository root directory.\n\n⚠️ Security Warning: DO NOT share your OpenStack RC File with anyone. Never push this to GitHub. This file is already included in .gitignore to prevent accidental commits.\n\nSource the OpenStack credentials script from your terminal:\n\nsource def-ubcawp-dev-openrc.sh\nYou will be prompted to enter your OpenStack password. Enter your password when prompted."
+  },
+  {
+    "objectID": "tutorial/arbutus-auth.html#verification",
+    "href": "tutorial/arbutus-auth.html#verification",
+    "title": "01. Arbutus Authentication",
+    "section": "Verification",
+    "text": "Verification\nVerify that you’re authenticated by running the following command:\nList available Docker images:\nopenstack image list\nIf this command executes successfully, you are authenticated and ready to use OpenStack commands."
+  },
+  {
+    "objectID": "tutorial/arbutus-auth.html#next-steps",
+    "href": "tutorial/arbutus-auth.html#next-steps",
+    "title": "01. Arbutus Authentication",
+    "section": "Next Steps",
+    "text": "Next Steps\n\nS3 Storage Setup - Configure object storage access"
+  },
+  {
+    "objectID": "tutorial/getting-started.html",
+    "href": "tutorial/getting-started.html",
+    "title": "00. Getting Started",
+    "section": "",
+    "text": "Before you begin, ensure you have:\n\nAn account with Digital Research Alliance of Canada\nAn account with Arbutus\nThe ability to login to Arbutus\n\n\n\n\nTo recreate the computational environment, you will need ONE of the following:\nOption A: Docker (Recommended)\n\nDocker installed on your computer\nWorks on all operating systems (Windows, macOS, Linux)\n\nOption B: Conda\n\nMiniforge installed\nconda-lock installed (run conda install conda-lock if not installed)\nOnly available for: linux-64, osx-64, osx-arm64"
+  },
+  {
+    "objectID": "tutorial/getting-started.html#prerequisites",
+    "href": "tutorial/getting-started.html#prerequisites",
+    "title": "00. Getting Started",
+    "section": "",
+    "text": "Before you begin, ensure you have:\n\nAn account with Digital Research Alliance of Canada\nAn account with Arbutus\nThe ability to login to Arbutus\n\n\n\n\nTo recreate the computational environment, you will need ONE of the following:\nOption A: Docker (Recommended)\n\nDocker installed on your computer\nWorks on all operating systems (Windows, macOS, Linux)\n\nOption B: Conda\n\nMiniforge installed\nconda-lock installed (run conda install conda-lock if not installed)\nOnly available for: linux-64, osx-64, osx-arm64"
+  },
+  {
+    "objectID": "tutorial/getting-started.html#installation",
+    "href": "tutorial/getting-started.html#installation",
+    "title": "00. Getting Started",
+    "section": "Installation",
+    "text": "Installation\n\nStep 1: Clone the Repository\ngit clone https://github.com/skysheng7/awp-arbutus-login.git\ncd awp-arbutus-login\n\n\nStep 2: Set Up Your Environment\nChoose the method that matches your prerequisites:\n\n\n\n\n\n\nNoteOption 1: Using Docker (Recommended)\n\n\n\n\n\nAdvantages: Works on all operating systems, consistent environment across platforms\n\nStart the Docker container:\n\ndocker compose run --rm arbutus_python\nOr use the Make shortcut:\nmake docker\n\nYou will enter a bash shell inside the container. Your prompt will look like:\n(arbutus) root@e5d14c9ca3cc:/#\nWhen finished, exit the container:\n\nType exit + press Enter to leave the bash shell\nRun docker compose down to remove the container, network and volumes\n\n\n\n\n\n\n\n\n\n\n\nNoteOption 2: Using conda-lock\n\n\n\n\n\nPlatforms: linux-64, osx-64, osx-arm64 only\nAdvantages: Reproducible environment with locked dependencies\nconda-lock install -n arbutus conda-lock.yml\nconda activate arbutus\n\n\n\n\n\n\n\n\n\nNoteOption 3: Using environment.yml\n\n\n\n\n\nPlatforms: linux-64, osx-64, osx-arm64 only\nAdvantages: Simpler setup\nconda env create -f environment.yml\nconda activate arbutus"
+  },
+  {
+    "objectID": "tutorial/getting-started.html#next-steps",
+    "href": "tutorial/getting-started.html#next-steps",
+    "title": "00. Getting Started",
+    "section": "Next Steps",
+    "text": "Next Steps\nOnce your environment is set up, proceed to:\n\nArbutus Authentication - Set up OpenStack authentication"
+  },
+  {
+    "objectID": "tutorial/cheatsheet.html",
+    "href": "tutorial/cheatsheet.html",
+    "title": "04. Command Cheatsheet",
+    "section": "",
+    "text": "# Source OpenStack credentials\nsource def-ubcawp-dev-openrc.sh\n\n# Verify authentication\nopenstack image list\n\n\n\n# Create EC2 credentials for S3 access\nopenstack ec2 credentials create\n\n# List EC2 credentials\nopenstack ec2 credentials list\n\n# Delete EC2 credentials\nopenstack ec2 credentials delete &lt;credential-id&gt;"
+  },
+  {
+    "objectID": "tutorial/cheatsheet.html#openstack-commands",
+    "href": "tutorial/cheatsheet.html#openstack-commands",
+    "title": "04. Command Cheatsheet",
+    "section": "",
+    "text": "# Source OpenStack credentials\nsource def-ubcawp-dev-openrc.sh\n\n# Verify authentication\nopenstack image list\n\n\n\n# Create EC2 credentials for S3 access\nopenstack ec2 credentials create\n\n# List EC2 credentials\nopenstack ec2 credentials list\n\n# Delete EC2 credentials\nopenstack ec2 credentials delete &lt;credential-id&gt;"
+  },
+  {
+    "objectID": "tutorial/cheatsheet.html#s3-commands-s3cmd",
+    "href": "tutorial/cheatsheet.html#s3-commands-s3cmd",
+    "title": "04. Command Cheatsheet",
+    "section": "S3 Commands (s3cmd)",
+    "text": "S3 Commands (s3cmd)\n\nConfiguration\n# Configure s3cmd\ns3cmd --configure\n\n# Test configuration\ns3cmd ls\n\n\nBucket Operations\n# Create a bucket\ns3cmd mb s3://BUCKET_NAME/\n\n# List all buckets\ns3cmd ls\n\n# List contents of a bucket\ns3cmd ls s3://BUCKET_NAME/\n\n# Get bucket information\ns3cmd info s3://BUCKET_NAME/\n\n# Delete an empty bucket\ns3cmd rb s3://BUCKET_NAME/\n\n# Delete a bucket and all its contents\ns3cmd rb --recursive s3://BUCKET_NAME/\n\n\nFile Operations\n# Upload a file\ns3cmd put --guess-mime-type FILE_NAME.dat s3://BUCKET_NAME/FILE_NAME.dat\n\n# Upload a file with custom path\ns3cmd put --guess-mime-type local_file.txt s3://BUCKET_NAME/path/to/remote_file.txt\n\n# Upload a directory recursively\ns3cmd put --recursive --guess-mime-type local_dir/ s3://BUCKET_NAME/\n\n# Download a file\ns3cmd get s3://BUCKET_NAME/FILE_NAME.dat local_file.dat\n\n# Download a directory recursively\ns3cmd get --recursive s3://BUCKET_NAME/remote_dir/ local_dir/\n\n# Delete a file\ns3cmd rm s3://BUCKET_NAME/FILE_NAME.dat\n\n# Delete multiple files (pattern matching)\ns3cmd del s3://BUCKET_NAME/*.tmp\n\n# Delete directory recursively\ns3cmd del --recursive s3://BUCKET_NAME/path/to/dir/\n\n\nAccess Control\n# Make bucket public (recursive)\ns3cmd setacl --acl-public -r s3://BUCKET_NAME/\n\n# Make bucket private\ns3cmd setacl --acl-private s3://BUCKET_NAME/\n\n# Set ACL for specific file\ns3cmd setacl --acl-public s3://BUCKET_NAME/FILE_NAME.dat\n\n# Get ACL information\ns3cmd info s3://BUCKET_NAME/\n\n\nSynchronization\n# Sync local directory to bucket\ns3cmd sync local_dir/ s3://BUCKET_NAME/remote_dir/\n\n# Sync bucket to local directory\ns3cmd sync s3://BUCKET_NAME/remote_dir/ local_dir/\n\n# Sync with exclusions\ns3cmd sync --exclude '*.tmp' --exclude '*.log' local_dir/ s3://BUCKET_NAME/\n\n\nUseful Options\n# Dry run (see what would happen without executing)\ns3cmd --dry-run put file.txt s3://BUCKET_NAME/\n\n# Verbose output\ns3cmd -v put file.txt s3://BUCKET_NAME/\n\n# Force operation (skip confirmation)\ns3cmd --force put file.txt s3://BUCKET_NAME/\n\n# Show progress\ns3cmd --progress put large_file.dat s3://BUCKET_NAME/"
+  },
+  {
+    "objectID": "tutorial/cheatsheet.html#quick-reference",
+    "href": "tutorial/cheatsheet.html#quick-reference",
+    "title": "04. Command Cheatsheet",
+    "section": "Quick Reference",
+    "text": "Quick Reference\n\n\n\n\n\n\n\nTask\nCommand\n\n\n\n\nCreate bucket\ns3cmd mb s3://BUCKET_NAME/\n\n\nList buckets\ns3cmd ls\n\n\nUpload file\ns3cmd put FILE s3://BUCKET_NAME/FILE\n\n\nDownload file\ns3cmd get s3://BUCKET_NAME/FILE LOCAL_FILE\n\n\nDelete file\ns3cmd rm s3://BUCKET_NAME/FILE\n\n\nMake public\ns3cmd setacl --acl-public -r s3://BUCKET_NAME/\n\n\nMake private\ns3cmd setacl --acl-private s3://BUCKET_NAME/\n\n\nSync directory\ns3cmd sync LOCAL_DIR/ s3://BUCKET_NAME/REMOTE_DIR/"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Arbutus Cloud Computing Guide",
+    "section": "",
+    "text": "This guide provides comprehensive instructions for working with Arbutus, Compute Canada’s OpenStack cloud platform, and managing object storage with S3."
+  },
+  {
+    "objectID": "index.html#welcome",
+    "href": "index.html#welcome",
+    "title": "Arbutus Cloud Computing Guide",
+    "section": "",
+    "text": "This guide provides comprehensive instructions for working with Arbutus, Compute Canada’s OpenStack cloud platform, and managing object storage with S3."
+  },
+  {
+    "objectID": "index.html#author",
+    "href": "index.html#author",
+    "title": "Arbutus Cloud Computing Guide",
+    "section": "Author",
+    "text": "Author\nSky (Kehan) Sheng\n\nUniversity of British Columbia Animal Welfare Program\nskysheng.io"
+  },
+  {
+    "objectID": "index.html#quick-cheatsheet-for-returning-users",
+    "href": "index.html#quick-cheatsheet-for-returning-users",
+    "title": "Arbutus Cloud Computing Guide",
+    "section": "Quick Cheatsheet (For Returning Users)",
+    "text": "Quick Cheatsheet (For Returning Users)\nIf you’ve already completed the tutorials and just need to get back up and running quickly, here are the essential commands:\n\nInitial Setup\n# Move to the local directory where you cloned https://github.com/skysheng7/awp-arbutus-login.git\ncd awp-arbutus-login\n\n# Build and start the Docker container with OpenStack tools (make sure you have Docker Desktop running)\nmake docker\n\n# Load your OpenStack credentials into the environment\nsource def-ubcawp-dev-openrc.sh\n\n# Test S3 connection (if already configured)\ns3cmd ls"
+  },
+  {
+    "objectID": "index.html#full-tutorials",
+    "href": "index.html#full-tutorials",
+    "title": "Arbutus Cloud Computing Guide",
+    "section": "Full Tutorials",
+    "text": "Full Tutorials\n\nGetting Started - Prerequisites and installation\nArbutus Authentication - Setting up OpenStack authentication\nS3 Storage Setup - Configuring s3cmd for object storage\nS3 Operations - Working with buckets and files\nCommand Cheatsheet - Quick reference for common commands"
+  },
+  {
+    "objectID": "index.html#what-is-arbutus",
+    "href": "index.html#what-is-arbutus",
+    "title": "Arbutus Cloud Computing Guide",
+    "section": "What is Arbutus?",
+    "text": "What is Arbutus?\nArbutus is Compute Canada’s OpenStack cloud platform that provides:\n\nVirtual machines and compute resources\nObject storage (S3-compatible)\nNetworking and security groups\nImage management"
+  },
+  {
+    "objectID": "index.html#additional-resources",
+    "href": "index.html#additional-resources",
+    "title": "Arbutus Cloud Computing Guide",
+    "section": "Additional Resources",
+    "text": "Additional Resources\n\nOpenStack CLI Guide\nDigital Research Alliance of Canada Documentation\nOpenStack Client Documentation\ns3cmd setup"
   }
 ]
