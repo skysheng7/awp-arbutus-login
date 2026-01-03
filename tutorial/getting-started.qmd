@@ -65,7 +65,7 @@ make docker
 
 3. When finished, exit the container:
    - Type `exit` + press `Enter` to leave the bash shell
-   - Run `docker compose rm` to remove the container
+   - Run `docker compose down` to remove the container, network and volumes
 
 :::
 

@@ -3,6 +3,7 @@ services:
     image: skysheng7/arbutus_python:115e735
     volumes:
       - .:/workspace
+    working_dir: /workspace
     stdin_open: true  # equivalent to -i
     tty: true         # equivalent to -t
     command: /bin/bash

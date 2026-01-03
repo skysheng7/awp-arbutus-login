@@ -14,7 +14,28 @@ This guide provides comprehensive instructions for working with Arbutus, Compute
 * University of British Columbia Animal Welfare Program
 * [skysheng.io](https://www.skysheng.io)
 
-## Quick Start
+## Quick Cheatsheet (For Returning Users)
+
+If you've already completed the tutorials and just need to get back up and running quickly, here are the essential commands:
+
+### Initial Setup
+```bash
+# Move to the local directory where you cloned https://github.com/skysheng7/awp-arbutus-login.git
+cd awp-arbutus-login
+
+# Build and start the Docker container with OpenStack tools (make sure you have Docker Desktop running)
+make docker
+
+# Load your OpenStack credentials into the environment
+source def-ubcawp-dev-openrc.sh
+
+# Test S3 connection (if already configured)
+s3cmd ls
+```
+
+---
+
+## Full Tutorials
 
 1. **[Getting Started](tutorial/getting-started.html)** - Prerequisites and installation
 2. **[Arbutus Authentication](tutorial/arbutus-auth.html)** - Setting up OpenStack authentication
