@@ -263,7 +263,7 @@
     "href": "index.html#quick-cheatsheet-for-returning-users",
     "title": "Arbutus Cloud Computing Guide",
     "section": "Quick Cheatsheet (For Returning Users)",
-    "text": "Quick Cheatsheet (For Returning Users)\nIf you’ve already completed the tutorials and just need to get back up and running quickly, here are the essential commands:\n\nInitial Setup\n# Move to the local directory where you cloned https://github.com/skysheng7/awp-arbutus-login.git\ncd awp-arbutus-login\n\n# Build and start the Docker container with OpenStack tools (make sure you have Docker Desktop running)\nmake docker\n\n# Load your OpenStack credentials into the environment\nsource def-ubcawp-dev-openrc.sh\n\n# Test S3 connection (if already configured)\ns3cmd ls"
+    "text": "Quick Cheatsheet (For Returning Users)\nIf you’ve already completed the tutorials and just need to get back up and running quickly, here are the essential commands:\n# Move to the local directory where you cloned https://github.com/skysheng7/awp-arbutus-login.git\ncd awp-arbutus-login\n\n# Build and start the Docker container with OpenStack tools \n# (make sure you have Docker Desktop running)\nmake docker\n\n# Load your OpenStack credentials into the environment\nsource def-ubcawp-dev-openrc.sh\n\n# Test S3 connection (if already configured)\ns3cmd ls"
   },
   {
     "objectID": "index.html#full-tutorials",

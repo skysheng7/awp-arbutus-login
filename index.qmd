@@ -18,12 +18,12 @@ This guide provides comprehensive instructions for working with Arbutus, Compute
 
 If you've already completed the tutorials and just need to get back up and running quickly, here are the essential commands:
 
-### Initial Setup
 ```bash
 # Move to the local directory where you cloned https://github.com/skysheng7/awp-arbutus-login.git
 cd awp-arbutus-login
 
-# Build and start the Docker container with OpenStack tools (make sure you have Docker Desktop running)
+# Build and start the Docker container with OpenStack tools 
+# (make sure you have Docker Desktop running)
 make docker
 
 # Load your OpenStack credentials into the environment
